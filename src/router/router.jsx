@@ -7,6 +7,7 @@ import MyCars from "../components/pages/MyCars/MyCars";
 import MyBookings from "../components/pages/MyBookings/MyBookings";
 import Login from "../components/pages/Login/Login";
 import Register from "../components/pages/Register/Register";
+import Error from "../components/Error/Error";
 
 
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element : <Register></Register>
+            },
+            {
+                path : '*',
+                element : <Error></Error>
             }
         ]
     },
