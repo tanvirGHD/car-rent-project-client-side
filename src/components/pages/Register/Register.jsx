@@ -4,6 +4,7 @@ import registerLottieData from "../../../assets/Animation - 1734893434070.json";
 import Lottie from "lottie-react";
 import AuthContext from "../../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import GoogleSignin from "../common/GoogleSignin";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -54,7 +55,7 @@ const Register = () => {
           text: "You have successfully registered!",
           confirmButtonText: "OK",
         }).then(() => {
-          navigate("/");
+          navigate("/login");
         });
       })
       .catch((error) => {
@@ -70,7 +71,7 @@ const Register = () => {
   };
 
   return (
-    <div className="card bg-blue-50 w-full max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="card bg-blue-50 w-full mb-7 max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
       {/* Animation Section */}
       <div className="flex-1 flex items-center justify-center">
         <div className="w-48 md:w-64">
@@ -85,6 +86,9 @@ const Register = () => {
             Register
           </h2>
           <div className="form-control">
+            <div className="w-full">
+            <GoogleSignin></GoogleSignin>
+            </div>
             <label className="label">
               <span className="label-text text-blue-800 font-medium">
                 Full Name

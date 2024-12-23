@@ -4,6 +4,7 @@ import loginLottieData from "../../../assets/Animation - 1734893434070.json";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import AuthContext from "../../../context/AuthContext/AuthContext";
+import GoogleSignin from "../common/GoogleSignin";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -46,7 +47,7 @@ const Login = () => {
   };
 
   return (
-    <div className="card bg-blue-50 w-full max-w-4xl mx-auto mt-20 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="card bg-blue-50 w-full mb-7 max-w-4xl mx-auto mt-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
       {/* Animation Section */}
       <div className="flex-1 flex items-center justify-center">
         <div className="w-48 md:w-64">
@@ -61,6 +62,7 @@ const Login = () => {
             Login
           </h2>
           <div className="form-control">
+            <GoogleSignin></GoogleSignin>
             <label className="label">
               <span className="label-text text-blue-800 font-medium">
                 Email

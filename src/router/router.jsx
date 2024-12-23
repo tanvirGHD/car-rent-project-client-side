@@ -8,6 +8,7 @@ import MyBookings from "../components/pages/MyBookings/MyBookings";
 import Login from "../components/pages/Login/Login";
 import Register from "../components/pages/Register/Register";
 import Error from "../components/Error/Error";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 
 
@@ -27,15 +28,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addCar',
-                element : <AddCar></AddCar>
+                element : <PrivateRoute><AddCar></AddCar></PrivateRoute>
             },
             {
                 path: '/myCars',
-                element : <MyCars></MyCars>
+                element : <PrivateRoute><MyCars></MyCars></PrivateRoute>
             },
             {
                 path: '/myBookings',
-                element : <MyBookings></MyBookings>
+                element : <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
             },
             {
                 path: '/login',

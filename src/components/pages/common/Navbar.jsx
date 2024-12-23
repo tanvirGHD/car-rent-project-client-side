@@ -1,6 +1,26 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../../../context/AuthContext/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOutUser().then(() => {
+      toast.success("Successfully Logged Out!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    });
+  };
+
   const links = (
     <>
       <li><NavLink to="/" className="px-3 py-2 hover:bg-gray-200 rounded">Home</NavLink></li>
@@ -17,10 +37,7 @@ const Navbar = () => {
       <div className="navbar-start">
         {/* Dropdown for mobile view */}
         <div className="dropdown">
-          <button
-            tabIndex={0}
-            className="btn btn-ghost lg:hidden"
-          >
+          <button tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -53,12 +70,22 @@ const Navbar = () => {
 
       {/* Navbar End */}
       <div className="navbar-end">
-        <Link to='/login'>
-        <button className="btn bg-blue-500 text-white hover:bg-blue-600">
-          Login
-        </button>
-        </Link>
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="btn bg-red-500 text-white hover:bg-red-600"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn" style={{ backgroundColor: "#00C1A2", color: "white" }}>
+              Login
+            </button>
+          </Link>
+        )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
