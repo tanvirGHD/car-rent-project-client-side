@@ -13,6 +13,7 @@ import CarDetails from "../components/pages/CarDetails/CarDetails";
 
 
 
+
 const router = createBrowserRouter([
     {
         path: "/",

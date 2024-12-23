@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CarDetails = () => {
   const car = useLoaderData();
   const [isBooked, setIsBooked] = useState(false); // Track booking status
+  const navigate = useNavigate(); // Hook to navigate to another route
 
   const handleBooking = () => {
     if (isBooked) {
@@ -11,18 +14,20 @@ const CarDetails = () => {
       return;
     }
 
+    // Show Toast notification
+    toast.info("Booking in progress...");
+
     // Send specific booking data to the backend
     const bookingData = {
-        model: car.model,
-        dailyRentalPrice: car.dailyRentalPrice,
-        features: car.features,
-        bookingCount: car.bookingCount,
-        availability: car.availability,
-        description: car.description,
-        additionalInfo: car.additionalInfo,
-        images: car.images,
-      };
-      
+      model: car.model,
+      dailyRentalPrice: car.dailyRentalPrice,
+      features: car.features,
+      bookingCount: car.bookingCount,
+      availability: car.availability,
+      description: car.description,
+      additionalInfo: car.additionalInfo,
+      images: car.images,
+    };
 
     fetch('http://localhost:5000/cars-booking', {
       method: 'POST',
@@ -35,9 +40,18 @@ const CarDetails = () => {
       .then(data => {
         console.log("Booking response:", data);
         setIsBooked(true); // Mark as booked
+
+        // Show Toast notification for booking success
+        toast.success("Booking Successful!");
+
+        // Redirect to /myBookings page after successful booking
+        navigate('/myBookings');
       })
       .catch(error => {
         console.error("Error booking car:", error);
+
+        // Show Toast notification for booking failure
+        toast.error("Booking Failed. Please try again.");
       });
   };
 
@@ -93,6 +107,9 @@ const CarDetails = () => {
           {isBooked ? 'Booked' : 'Book Now'}
         </button>
       </div>
+
+      {/* Toast Container for react-toastify */}
+      <ToastContainer />
     </div>
   );
 };
