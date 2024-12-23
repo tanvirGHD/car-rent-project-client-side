@@ -4,6 +4,20 @@ import registerLottieData from "../../../assets/Animation - 1734893434070.json";
 import Lottie from "lottie-react";
 
 const Register = () => {
+
+
+  const handleRegister = e =>{
+    e.preventDefault()
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+
+    console.log(name, email, password, photo)
+  }
+
+
   return (
     <div className="card bg-blue-50 w-full max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
       {/* Animation Section */}
@@ -15,7 +29,7 @@ const Register = () => {
 
       {/* Form Section */}
       <div className="flex-1">
-        <form className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-4">
           <h2 className="text-center text-3xl font-bold text-[#00C1A2]">
             Register
           </h2>
@@ -35,9 +49,7 @@ const Register = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-blue-800 font-medium">
-                Email
-              </span>
+              <span className="label-text text-blue-800 font-medium">Email</span>
             </label>
             <input
               type="email"
@@ -57,6 +69,20 @@ const Register = () => {
               type="password"
               name="password"
               placeholder="Enter your password"
+              className="input input-bordered border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-blue-800 font-medium">
+                Photo URL
+              </span>
+            </label>
+            <input
+              type="url"
+              name="photo"
+              placeholder="Enter photo URL"
               className="input input-bordered border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200"
               required
             />
