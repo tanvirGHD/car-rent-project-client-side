@@ -1,22 +1,73 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import registerLottieData from "../../../assets/Animation - 1734893434070.json";
 import Lottie from "lottie-react";
+import AuthContext from "../../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-
-  const handleRegister = e =>{
-    e.preventDefault()
+  const handleRegister = (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
 
-    console.log(name, email, password, photo)
-  }
+    // Password validation
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Weak Password",
+        text: "Password must be at least 6 characters long.",
+      });
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Weak Password",
+        text: "Password must contain at least one uppercase letter.",
+      });
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Weak Password",
+        text: "Password must contain at least one lowercase letter.",
+      });
+      return;
+    }
 
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successful",
+          text: "You have successfully registered!",
+          confirmButtonText: "OK",
+        }).then(() => {
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.error(error.message);
+
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: error.message,
+          confirmButtonText: "Try Again",
+        });
+      });
+  };
 
   return (
     <div className="card bg-blue-50 w-full max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
