@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const CarDetails = () => {
   const car = useLoaderData();
@@ -22,23 +23,16 @@ const CarDetails = () => {
       model: car.model,
       dailyRentalPrice: car.dailyRentalPrice,
       features: car.features,
-      bookingCount: car.bookingCount,
       availability: car.availability,
       description: car.description,
       additionalInfo: car.additionalInfo,
       images: car.images,
     };
 
-    fetch('http://localhost:5000/cars-booking', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(bookingData),
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log("Booking response:", data);
+    // Replace fetch with axios
+    axios.post('http://localhost:5000/cars-booking', bookingData)
+      .then(response => {
+        console.log("Booking response:", response.data);
         setIsBooked(true); // Mark as booked
 
         // Show Toast notification for booking success
@@ -81,10 +75,6 @@ const CarDetails = () => {
         <div>
           <h3 className="text-lg font-semibold">Features</h3>
           <p>{car.features}</p>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold">Booking Count</h3>
-          <p>{car.bookingCount}</p>
         </div>
       </div>
 

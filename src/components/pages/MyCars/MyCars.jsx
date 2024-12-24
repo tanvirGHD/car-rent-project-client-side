@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const MyCars = () => {
   const [cars, setCars] = useState([]);
   const [sortOption, setSortOption] = useState("dateAsc");
 
-  // Fetch cars from the backend
+  // Fetch cars from the backend using axios
   useEffect(() => {
-    fetch("http://localhost:5000/cars")
-      .then((res) => res.json())
-      .then((data) => setCars(data))
-      .catch((err) => console.error("Error fetching cars:", err));
+    axios
+      .get("http://localhost:5000/cars")
+      .then((response) => {
+        setCars(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching cars:", error);
+      });
   }, []);
 
   // Handle delete with confirmation
@@ -26,30 +31,15 @@ const MyCars = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cars/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => {
-            if (!res.ok) {
-              throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-          })
+        axios
+          .delete(`http://localhost:5000/cars/${id}`)
           .then(() => {
             setCars((prevCars) => prevCars.filter((car) => car._id !== id));
-            Swal.fire(
-              "Deleted!",
-              "The car has been deleted successfully.",
-              "success"
-            );
+            Swal.fire("Deleted!", "The car has been deleted successfully.", "success");
           })
-          .catch((err) => {
-            console.error("Error deleting car:", err);
-            Swal.fire(
-              "Error!",
-              "An error occurred while deleting the car.",
-              "error"
-            );
+          .catch((error) => {
+            console.error("Error deleting car:", error);
+            Swal.fire("Error!", "An error occurred while deleting the car.", "error");
           });
       }
     });
@@ -77,6 +67,15 @@ const MyCars = () => {
 
   // Sorted cars
   const sortedCars = sortCars([...cars], sortOption);
+
+  // Function to format the date properly
+  const formatDate = (date) => {
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate)) {
+      return "Invalid Date";
+    }
+    return parsedDate.toLocaleDateString();
+  };
 
   return (
     <div className="px-4 py-6">
@@ -136,7 +135,7 @@ const MyCars = () => {
                   </td>
                   <td className="border px-4 py-2">{car.availability}</td>
                   <td className="border px-4 py-2">
-                    {new Date(car.dateAdded).toLocaleDateString()}
+                    {formatDate(car.dateAdded)}
                   </td>
                   <td className="border px-4 py-2 flex justify-between gap-2">
                     <Link to={`/updateCar/${car._id}`}>

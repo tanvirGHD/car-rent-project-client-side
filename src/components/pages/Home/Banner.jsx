@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <section className="relative w-full h-screen">
+    <div className="relative w-full h-screen">
       {/* Background Video */}
       <div className="absolute inset-0">
         <iframe
           width="100%"
-          height="100%"
+          height="50%" // Height reduced further to 50%
           src="https://www.youtube.com/embed/8vPpJIqGMBI?autoplay=1&controls=0&loop=1&playlist=8vPpJIqGMBI"
           title="YouTube video player"
           frameBorder="0"
@@ -40,7 +40,7 @@ const Banner = () => {
           View Available Cars
         </Link>
       </div>
-    </section>
+    </div>
   );
 };
 

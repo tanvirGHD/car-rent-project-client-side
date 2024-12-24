@@ -2,7 +2,7 @@ import React from "react";
 
 const ChooseUs = () => {
   return (
-    <div class="bg-gray-100 py-16">
+    <div class=" bg-[#daf7f4] py-16">
       <h2 class="text-center text-3xl font-semibold mb-8">Why Choose Us?</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center bg-white shadow-lg p-6 rounded-lg">

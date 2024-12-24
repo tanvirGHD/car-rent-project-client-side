@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const AvailableCar = () => {
   const [cars, setCars] = useState([]);
+  const [booking, setBooking] = useState([])
   const [view, setView] = useState("grid"); // Grid or List view
   const [searchQuery, setSearchQuery] = useState(""); // For search functionality
 
@@ -12,6 +13,7 @@ const AvailableCar = () => {
       .then((res) => res.json())
       .then((data) => setCars(data));
   }, []);
+
 
   // Search functionality
   const filteredCars = cars.filter(
@@ -54,7 +56,7 @@ const AvailableCar = () => {
         {filteredCars.map((car) => (
           <div
             key={car._id}
-            className="p-4 border border-gray-300 rounded shadow-lg hover:shadow-2xl transition-shadow duration-500 ease-in-out transform hover:scale-105"
+            className="p-4 border border-gray-300  bg-white rounded shadow-lg hover:shadow-2xl transition-shadow duration-500 ease-in-out transform hover:scale-105"
           >
             <img
               src={car.images}
@@ -76,9 +78,9 @@ const AvailableCar = () => {
             <p>
               <strong>Location:</strong> {car.additionalInfo}
             </p>
-            <p>
-              <strong>Booking Count:</strong> {car.bookingCount}
-            </p>
+            {/* <p>
+              <strong>Booking Count: </strong> {booking.applicationCount}
+            </p> */}
             <Link to={`/details/${car._id}`}>
               <button className="bg-[#00C1A2] text-white py-2 px-4 rounded mt-4 w-full transition-all duration-500 ease-in-out transform hover:scale-105">
                 Details Information
@@ -92,3 +94,9 @@ const AvailableCar = () => {
 };
 
 export default AvailableCar;
+
+
+
+
+
+
