@@ -1,24 +1,71 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyCars = () => {
   const [cars, setCars] = useState([]);
-  const [sortOption, setSortOption] = useState("dateAsc"); // Default sorting by date (Oldest First)
+  const [sortOption, setSortOption] = useState("dateAsc");
 
+  // Fetch cars from the backend
   useEffect(() => {
-    // Fetch the cars from the backend
     fetch("http://localhost:5000/cars")
       .then((res) => res.json())
       .then((data) => setCars(data))
       .catch((err) => console.error("Error fetching cars:", err));
   }, []);
 
-  // Function to sort cars based on the selected option
+  // Handle delete with confirmation
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/cars/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+          })
+          .then(() => {
+            setCars((prevCars) => prevCars.filter((car) => car._id !== id));
+            Swal.fire(
+              "Deleted!",
+              "The car has been deleted successfully.",
+              "success"
+            );
+          })
+          .catch((err) => {
+            console.error("Error deleting car:", err);
+            Swal.fire(
+              "Error!",
+              "An error occurred while deleting the car.",
+              "error"
+            );
+          });
+      }
+    });
+  };
+
+  // Sort cars based on selected option
   const sortCars = (cars, option) => {
     switch (option) {
       case "dateAsc":
-        return cars.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+        return cars.sort(
+          (a, b) => new Date(a.dateAdded) - new Date(b.dateAdded)
+        );
       case "dateDesc":
-        return cars.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+        return cars.sort(
+          (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
+        );
       case "priceAsc":
         return cars.sort((a, b) => a.dailyRentalPrice - b.dailyRentalPrice);
       case "priceDesc":
@@ -28,18 +75,8 @@ const MyCars = () => {
     }
   };
 
-  // Apply the sorting function
+  // Sorted cars
   const sortedCars = sortCars([...cars], sortOption);
-
-  const handleUpdate = (carId) => {
-    console.log("Update car with ID:", carId);
-    // Add update logic here (trigger modal or form)
-  };
-
-  const handleDelete = (carId) => {
-    console.log("Delete car with ID:", carId);
-    // Add delete logic here (confirmation and remove car)
-  };
 
   return (
     <div className="px-4 py-6">
@@ -63,7 +100,12 @@ const MyCars = () => {
       {/* Display Cars Table */}
       {cars.length === 0 ? (
         <div>
-          <p>No cars added yet. <a href="/add-car" className="text-blue-500">Add a car</a></p>
+          <p>
+            No cars added yet.{" "}
+            <Link to="/add-car" className="text-blue-500">
+              Add a car
+            </Link>
+          </p>
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -82,21 +124,26 @@ const MyCars = () => {
               {sortedCars.map((car) => (
                 <tr key={car._id} className="hover:bg-gray-100">
                   <td className="border px-4 py-2">
-                    <img src={car.images} alt={car.model} className="w-24 h-16 object-cover" />
+                    <img
+                      src={car.images}
+                      alt={car.model}
+                      className="w-24 h-16 object-cover"
+                    />
                   </td>
                   <td className="border px-4 py-2">{car.model}</td>
-                  <td className="border px-4 py-2">{car.dailyRentalPrice} BDT</td>
+                  <td className="border px-4 py-2">
+                    {car.dailyRentalPrice} BDT
+                  </td>
                   <td className="border px-4 py-2">{car.availability}</td>
                   <td className="border px-4 py-2">
-                    {new Date(car.dateAdded).toLocaleDateString()} {/* Dynamically formatted date */}
+                    {new Date(car.dateAdded).toLocaleDateString()}
                   </td>
                   <td className="border px-4 py-2 flex justify-between gap-2">
-                    <button
-                      onClick={() => handleUpdate(car._id)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto"
-                    >
-                      Update
-                    </button>
+                    <Link to={`/updateCar/${car._id}`}>
+                      <button className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto">
+                        Update
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(car._id)}
                       className="bg-red-500 text-white px-4 py-2 rounded w-full sm:w-auto"
