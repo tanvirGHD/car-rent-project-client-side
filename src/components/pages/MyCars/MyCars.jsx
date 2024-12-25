@@ -10,7 +10,9 @@ const MyCars = () => {
   // Fetch cars from the backend using axios
   useEffect(() => {
     axios
-      .get("http://localhost:5000/cars")
+      .get("http://localhost:5000/cars", {
+        withCredentials: true
+      })
       .then((response) => {
         setCars(response.data);
       })
