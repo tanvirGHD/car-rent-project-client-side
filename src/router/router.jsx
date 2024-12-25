@@ -11,6 +11,7 @@ import Error from "../components/Error/Error";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import CarDetails from "../components/pages/CarDetails/CarDetails";
 import UpdateCars from "../components/pages/MyCars/UpdateCars";
+import DataVisualization from "../components/pages/DataVisualization/DataVisualization";
 
 
 
@@ -45,13 +46,16 @@ const router = createBrowserRouter([
             {
                 path: '/myBookings',
                 element : <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
-                
-                
             },
             {
                 path: '/details/:id',
                 element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/cars/${params.id}`)
+            },
+            {
+                path: '/dataVisualization',
+                element: <PrivateRoute><DataVisualization></DataVisualization></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/cars'),
             },
             {
                 path: '/login',

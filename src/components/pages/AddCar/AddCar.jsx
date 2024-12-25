@@ -1,8 +1,10 @@
 import React from "react";
 import Swal from "sweetalert2";
 import axios from "axios"; // Import axios
+import { useNavigate } from "react-router-dom";
 
 const AddCar = () => {
+  const navigate = useNavigate()
   const handleAddCar = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -11,6 +13,7 @@ const AddCar = () => {
 
     axios
       .post("http://localhost:5000/cars", initialData, {
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
@@ -24,6 +27,7 @@ const AddCar = () => {
             confirmButtonText: "OK",
           });
         }
+        navigate('/availableCar');
       })
       .catch((error) => {
         Swal.fire({

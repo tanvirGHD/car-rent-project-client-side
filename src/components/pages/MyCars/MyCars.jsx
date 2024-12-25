@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const MyCars = () => {
   const [cars, setCars] = useState([]);
   const [sortOption, setSortOption] = useState("dateAsc");
+  const axiosSecure = useAxiosSecure()
 
   // Fetch cars from the backend using axios
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/cars", {
-        withCredentials: true
+    // axios
+    //   .get("http://localhost:5000/cars", {
+    //     withCredentials: true
+    //   })
+    axiosSecure.get("/cars", {
+
       })
       .then((response) => {
         setCars(response.data);
@@ -19,6 +24,9 @@ const MyCars = () => {
       .catch((error) => {
         console.error("Error fetching cars:", error);
       });
+
+
+
   }, []);
 
   // Handle delete with confirmation

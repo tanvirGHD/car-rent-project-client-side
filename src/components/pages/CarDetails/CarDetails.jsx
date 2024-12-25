@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -5,20 +7,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 const CarDetails = () => {
-  const car = useLoaderData();
-  const [isBooked, setIsBooked] = useState(false); // Track booking status
-  const navigate = useNavigate(); // Hook to navigate to another route
+  const car = useLoaderData(); // Retrieve car data from loader
+  const [isBooked, setIsBooked] = useState(false); // State to track booking status
+  const navigate = useNavigate(); // Hook to navigate after booking
 
   const handleBooking = () => {
     if (isBooked) {
-      // If the car is already booked, don't send the request again
+      // If already booked, don't proceed
       return;
     }
 
-    // Show Toast notification
+    // Show a toast for booking progress
     toast.info("Booking in progress...");
 
-    // Send specific booking data to the backend
+    // Prepare booking data
     const bookingData = {
       model: car.model,
       dailyRentalPrice: car.dailyRentalPrice,
@@ -29,23 +31,16 @@ const CarDetails = () => {
       images: car.images,
     };
 
-    // Replace fetch with axios
+    // Use axios to post booking data
     axios.post('http://localhost:5000/cars-booking', bookingData)
       .then(response => {
-        console.log("Booking response:", response.data);
-        setIsBooked(true); // Mark as booked
-
-        // Show Toast notification for booking success
-        toast.success("Booking Successful!");
-
-        // Redirect to /myBookings page after successful booking
-        navigate('/myBookings');
+        setIsBooked(true); // Mark the car as booked
+        toast.success("Booking Successful!"); // Notify booking success
+        navigate('/myBookings'); // Navigate to myBookings page
       })
       .catch(error => {
         console.error("Error booking car:", error);
-
-        // Show Toast notification for booking failure
-        toast.error("Booking Failed. Please try again.");
+        toast.error("Booking Failed. Please try again."); // Notify booking failure
       });
   };
 
@@ -92,7 +87,7 @@ const CarDetails = () => {
         <button
           onClick={handleBooking}
           className={`bg-blue-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ${isBooked ? 'bg-gray-500 cursor-not-allowed' : ''}`}
-          disabled={isBooked} // Disable the button if the car is booked
+          disabled={isBooked} // Disable the button if already booked
         >
           {isBooked ? 'Booked' : 'Book Now'}
         </button>

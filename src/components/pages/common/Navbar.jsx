@@ -28,6 +28,7 @@ const Navbar = () => {
       <li><NavLink to="/addCar" className="px-3 py-2 hover:bg-gray-200 rounded">Add Car</NavLink></li>
       <li><NavLink to="/myCars" className="px-3 py-2 hover:bg-gray-200 rounded">My Cars</NavLink></li>
       <li><NavLink to="/myBookings" className="px-3 py-2 hover:bg-gray-200 rounded">My Bookings</NavLink></li>
+      <li><NavLink to="/dataVisualization" className="px-3 py-2 hover:bg-gray-200 rounded">Data Visualization</NavLink></li>
     </>
   );
 

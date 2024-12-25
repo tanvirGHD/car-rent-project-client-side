@@ -1,9 +1,11 @@
+
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { FaCalendarAlt, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 const MyBookings = () => {
     const [cars, setCars] = useState([]);
@@ -12,16 +14,17 @@ const MyBookings = () => {
     const [newStartDate, setNewStartDate] = useState(new Date());
     const [newEndDate, setNewEndDate] = useState(new Date());
 
-    // Fetch cars booking data using Axios
+    const axiosSecure = useAxiosSecure();
+
     useEffect(() => {
-        axios.get('http://localhost:5000/cars-booking')
+        axiosSecure.get('/cars-booking')
             .then(response => {
                 const carsData = response.data.map(car => ({
                     id: car._id,
                     model: car.model,
                     price: car.dailyRentalPrice,
                     features: car.features,
-                    bookings: car.bookingCount,
+                    bookings: car.bookingCount || 0, // bookingCount will be updated
                     status: car.availability,
                     description: car.description,
                     location: car.additionalInfo,
@@ -36,23 +39,6 @@ const MyBookings = () => {
             });
     }, []);
 
-    // Add booking with default current date
-    const handleAddBooking = () => {
-        const newBooking = {
-            id: new Date().getTime().toString(),
-            model: "New Car",
-            price: 100,
-            bookings: 0,
-            status: "Available",
-            imageUrl: "https://via.placeholder.com/150",
-            startDate: new Date(),
-            endDate: new Date(),
-        };
-
-        setCars(prevCars => [...prevCars, newBooking]);
-
-        Swal.fire("Success!", "New booking added with current date!", "success");
-    };
 
     // Modify booking date using Axios
     const handleModifyBooking = (bookingId) => {
@@ -81,7 +67,7 @@ const MyBookings = () => {
         setSelectedBooking(null);
     };
 
-    // Delete booking using Axios
+    // Delete booking using Axios and update booking count
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -115,7 +101,6 @@ const MyBookings = () => {
             <h2 className="text-2xl font-semibold mb-4">My Bookings: {cars.length}</h2>
             <button
                 className="bg-green-500 text-white px-4 py-2 rounded mb-4"
-                onClick={handleAddBooking}
             >
                 Add New Booking
             </button>

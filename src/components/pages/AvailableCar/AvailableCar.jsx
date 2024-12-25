@@ -1,5 +1,7 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const AvailableCar = () => {
   const [cars, setCars] = useState([]);
@@ -7,11 +9,16 @@ const AvailableCar = () => {
   const [view, setView] = useState("grid"); // Grid or List view
   const [searchQuery, setSearchQuery] = useState(""); // For search functionality
 
+  const axiosSecure = useAxiosSecure()
   // Fetching the car data
   useEffect(() => {
-    fetch("http://localhost:5000/cars")
-      .then((res) => res.json())
-      .then((data) => setCars(data));
+    axiosSecure.get("/cars")
+      .then((response) => {
+        setCars(response.data);  
+      })
+      .catch((error) => {
+        console.error("Error fetching cars:", error);
+      });
   }, []);
 
 
@@ -78,9 +85,6 @@ const AvailableCar = () => {
             <p>
               <strong>Location:</strong> {car.additionalInfo}
             </p>
-            {/* <p>
-              <strong>Booking Count: </strong> {booking.applicationCount}
-            </p> */}
             <Link to={`/details/${car._id}`}>
               <button className="bg-[#00C1A2] text-white py-2 px-4 rounded mt-4 w-full transition-all duration-500 ease-in-out transform hover:scale-105">
                 Details Information
@@ -94,9 +98,3 @@ const AvailableCar = () => {
 };
 
 export default AvailableCar;
-
-
-
-
-
-
