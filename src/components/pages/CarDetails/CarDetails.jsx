@@ -46,7 +46,7 @@ const CarDetails = () => {
 
   return (
     <div className="p-6 mb-6 max-w-3xl mx-auto border bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-4 "></h2>
+      <h2 className="text-3xl font-bold mb-4 "> Car Details</h2>
       <h2 className="text-2xl font-semibold mb-4 text-center">
         Car Model: {car.model}
       </h2>
