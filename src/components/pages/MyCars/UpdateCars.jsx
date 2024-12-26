@@ -26,7 +26,7 @@ const UpdateCars = () => {
 
     // Using axios to update the car data
     axios
-      .put(`http://localhost:5000/cars/${_id}`, initialData, {
+      .put(`https://car-rent-server-side.vercel.app/cars/${_id}`, initialData, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",

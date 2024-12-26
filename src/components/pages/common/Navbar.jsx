@@ -1,39 +1,102 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
+  const [isSticky, setIsSticky] = useState(false);
 
   const handleLogOut = () => {
-    logOutUser().then(() => {
-      toast.success("Successfully Logged Out!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    });
+    logOutUser().then(() => {});
   };
 
   const links = (
     <>
-      <li><NavLink to="/" className="px-3 py-2 hover:bg-gray-200 rounded">Home</NavLink></li>
-      <li><NavLink to="/availableCar" className="px-3 py-2 hover:bg-gray-200 rounded">Available Car</NavLink></li>
-      <li><NavLink to="/addCar" className="px-3 py-2 hover:bg-gray-200 rounded">Add Car</NavLink></li>
-      <li><NavLink to="/myCars" className="px-3 py-2 hover:bg-gray-200 rounded">My Cars</NavLink></li>
-      <li><NavLink to="/myBookings" className="px-3 py-2 hover:bg-gray-200 rounded">My Bookings</NavLink></li>
-      <li><NavLink to="/dataVisualization" className="px-3 py-2 hover:bg-gray-200 rounded">Data Visualization</NavLink></li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `px-3 py-2 rounded ${
+              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+            }`
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/availableCar"
+          className={({ isActive }) =>
+            `px-3 py-2 rounded ${
+              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+            }`
+          }
+        >
+          Available Car
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/addCar"
+          className={({ isActive }) =>
+            `px-3 py-2 rounded ${
+              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+            }`
+          }
+        >
+          Add Car
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/myCars"
+          className={({ isActive }) =>
+            `px-3 py-2 rounded ${
+              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+            }`
+          }
+        >
+          My Cars
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/myBookings"
+          className={({ isActive }) =>
+            `px-3 py-2 rounded ${
+              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+            }`
+          }
+        >
+          My Bookings
+        </NavLink>
+      </li>
     </>
   );
 
+  // Handle sticky navbar logic
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="navbar bg-[#daf7f4]">
+    <div
+      className={`navbar ${
+        isSticky ? "sticky top-0 z-50 bg-opacity-60 backdrop-blur-md" : ""
+      }`}
+    >
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Dropdown for mobile view */}
@@ -61,7 +124,14 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-[#179983] text-3xl font-bold flex items-center space-x-2">
+          <img
+            src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
+            alt="Rentalcars Logo"
+            className="w-12 h-12 sm:w-8 sm:h-8"
+          />
+          <span className="md:text-3xl text-xl">Rentalcars</span>
+        </a>
       </div>
 
       {/* Navbar Center */}
@@ -80,7 +150,10 @@ const Navbar = () => {
           </button>
         ) : (
           <Link to="/login">
-            <button className="btn" style={{ backgroundColor: "#00C1A2", color: "white" }}>
+            <button
+              className="btn"
+              style={{ backgroundColor: "#00C1A2", color: "white" }}
+            >
               Login
             </button>
           </Link>

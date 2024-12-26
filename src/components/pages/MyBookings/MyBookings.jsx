@@ -1,11 +1,15 @@
 
+
+
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { FaCalendarAlt, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
+import DataVisualization from '../DataVisualization/DataVisualization';
 
 const MyBookings = () => {
     const [cars, setCars] = useState([]);
@@ -16,6 +20,7 @@ const MyBookings = () => {
 
     const axiosSecure = useAxiosSecure();
 
+    // Fetch the car bookings on page load
     useEffect(() => {
         axiosSecure.get('/cars-booking')
             .then(response => {
@@ -24,7 +29,7 @@ const MyBookings = () => {
                     model: car.model,
                     price: car.dailyRentalPrice,
                     features: car.features,
-                    bookings: car.bookingCount || 0, // bookingCount will be updated
+                    bookings: car.bookingCount || 0,
                     status: car.availability,
                     description: car.description,
                     location: car.additionalInfo,
@@ -36,9 +41,9 @@ const MyBookings = () => {
             })
             .catch(error => {
                 console.error("Error fetching car bookings:", error);
+                Swal.fire("Error", "Failed to fetch bookings.", "error");
             });
     }, []);
-
 
     // Modify booking date using Axios
     const handleModifyBooking = (bookingId) => {
@@ -51,7 +56,7 @@ const MyBookings = () => {
                 )
             );
 
-            axios.put(`http://localhost:5000/cars-booking/${bookingId}`, {
+            axios.put(`https://car-rent-server-side.vercel.app/cars-booking/${bookingId}`, {
                 startDate: newStartDate,
                 endDate: newEndDate,
             })
@@ -79,7 +84,7 @@ const MyBookings = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/cars-booking/${id}`)
+                axios.delete(`https://car-rent-server-side.vercel.app/cars-booking/${id}`)
                     .then(res => {
                         if (res.status === 200) {
                             setCars(prevCars => prevCars.filter(car => car.id !== id));
@@ -98,12 +103,12 @@ const MyBookings = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">My Bookings: {cars.length}</h2>
-            <button
-                className="bg-green-500 text-white px-4 py-2 rounded mb-4"
-            >
-                Add New Booking
-            </button>
+            <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
+            <Link to="/availableCar">
+                <button className="bg-green-500 text-white px-4 py-2 rounded mb-4">
+                    Add New Booking
+                </button>
+            </Link>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-separate border-spacing-2">
                     <thead>
@@ -194,6 +199,9 @@ const MyBookings = () => {
                     </div>
                 </div>
             )}
+            <div>
+                <DataVisualization></DataVisualization>
+            </div>
         </div>
     );
 };

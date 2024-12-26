@@ -7,26 +7,18 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 const MyCars = () => {
   const [cars, setCars] = useState([]);
   const [sortOption, setSortOption] = useState("dateAsc");
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   // Fetch cars from the backend using axios
   useEffect(() => {
-    // axios
-    //   .get("http://localhost:5000/cars", {
-    //     withCredentials: true
-    //   })
-    axiosSecure.get("/cars", {
-
-      })
+    axiosSecure
+      .get("/cars", {})
       .then((response) => {
         setCars(response.data);
       })
       .catch((error) => {
         console.error("Error fetching cars:", error);
       });
-
-
-
   }, []);
 
   // Handle delete with confirmation
@@ -42,14 +34,22 @@ const MyCars = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/cars/${id}`)
+          .delete(`https://car-rent-server-side.vercel.app/cars/${id}`)
           .then(() => {
             setCars((prevCars) => prevCars.filter((car) => car._id !== id));
-            Swal.fire("Deleted!", "The car has been deleted successfully.", "success");
+            Swal.fire(
+              "Deleted!",
+              "The car has been deleted successfully.",
+              "success"
+            );
           })
           .catch((error) => {
             console.error("Error deleting car:", error);
-            Swal.fire("Error!", "An error occurred while deleting the car.", "error");
+            Swal.fire(
+              "Error!",
+              "An error occurred while deleting the car.",
+              "error"
+            );
           });
       }
     });
@@ -78,15 +78,6 @@ const MyCars = () => {
   // Sorted cars
   const sortedCars = sortCars([...cars], sortOption);
 
-  // Function to format the date properly
-  const formatDate = (date) => {
-    const parsedDate = new Date(date);
-    if (isNaN(parsedDate)) {
-      return "Invalid Date";
-    }
-    return parsedDate.toLocaleDateString();
-  };
-
   return (
     <div className="px-4 py-6">
       <h2 className="text-2xl font-bold text-blue-600 mb-4">My Cars</h2>
@@ -108,10 +99,13 @@ const MyCars = () => {
 
       {/* Display Cars Table */}
       {cars.length === 0 ? (
-        <div>
-          <p>
+        <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg shadow-md">
+          <p className="text-gray-600 text-lg">
             No cars added yet.{" "}
-            <Link to="/add-car" className="text-blue-500">
+            <Link
+              to="/addCar"
+              className="text-blue-500 font-semibold hover:underline"
+            >
               Add a car
             </Link>
           </p>
@@ -144,9 +138,7 @@ const MyCars = () => {
                     {car.dailyRentalPrice} BDT
                   </td>
                   <td className="border px-4 py-2">{car.availability}</td>
-                  <td className="border px-4 py-2">
-                    {formatDate(car.dateAdded)}
-                  </td>
+                  <td className="border px-4 py-2">{car.dateAdded}</td>
                   <td className="border px-4 py-2 flex justify-between gap-2">
                     <Link to={`/updateCar/${car._id}`}>
                       <button className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto">

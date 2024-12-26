@@ -1,19 +1,20 @@
 import React from "react";
 import Swal from "sweetalert2";
-import axios from "axios"; // Import axios
+
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const AddCar = () => {
-  const navigate = useNavigate()
+  const axiosSecure = useAxiosSecure();
+
+  const navigate = useNavigate();
   const handleAddCar = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-    console.log(initialData);
 
-    axios
-      .post("http://localhost:5000/cars", initialData, {
-        withCredentials: true,
+    axiosSecure
+      .post("/cars", initialData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -27,7 +28,7 @@ const AddCar = () => {
             confirmButtonText: "OK",
           });
         }
-        navigate('/availableCar');
+        navigate("/availableCar");
       })
       .catch((error) => {
         Swal.fire({
@@ -41,7 +42,7 @@ const AddCar = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8 mb-10 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">Add Car</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">Add Car</h2>
       <form onSubmit={handleAddCar}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -54,11 +55,8 @@ const AddCar = () => {
               required
             />
           </div>
-
           <div>
-            <label className="block font-semibold mb-2">
-              Daily Rental Price
-            </label>
+            <label className="block font-semibold mb-2">Daily Rental Price</label>
             <input
               type="number"
               name="dailyRentalPrice"
@@ -67,7 +65,6 @@ const AddCar = () => {
               required
             />
           </div>
-
           <div>
             <label className="block font-semibold mb-2">Availability</label>
             <select
@@ -80,7 +77,6 @@ const AddCar = () => {
               <option value="notAvailable">Not Available</option>
             </select>
           </div>
-
           <div>
             <label className="block font-semibold mb-2">
               Vehicle Registration Number
@@ -93,7 +89,6 @@ const AddCar = () => {
               required
             />
           </div>
-
           <div>
             <label className="block font-semibold mb-2">Features</label>
             <input
@@ -103,7 +98,6 @@ const AddCar = () => {
               placeholder="e.g., GPS, AC, etc."
             />
           </div>
-
           <div>
             <label className="block font-semibold mb-2">Description</label>
             <textarea
@@ -112,22 +106,27 @@ const AddCar = () => {
               placeholder="Enter description"
             />
           </div>
-
           <div>
-            <label className="block font-semibold mb-2">Images</label>
+            <label className="block font-semibold mb-2">Images (URL)</label>
             <input
-              type="URL"
+              type="url"
               name="images"
               className="w-full p-3 border border-[#00C1A2] rounded-md"
-              multiple
+              placeholder="Enter image URL"
+            />
+          </div>
+          <div>
+            <label className="block font-semibold mb-2">Date Added</label>
+            <input
+              type="date"
+              name="dateAdded"
+              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              required
             />
           </div>
         </div>
-        {/* Additional Information Input takes full width */}
-        <div className="w-full">
-          <label className="block font-semibold mb-2">
-            Additional Information
-          </label>
+        <div className="mt-4">
+          <label className="block font-semibold mb-2">Additional Information</label>
           <input
             type="text"
             name="additionalInfo"
@@ -135,7 +134,6 @@ const AddCar = () => {
             placeholder="Any other information"
           />
         </div>
-
         <div className="mt-6 text-center">
           <button
             type="submit"

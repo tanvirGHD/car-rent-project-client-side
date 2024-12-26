@@ -11,7 +11,7 @@ const UserTestimonials = () => {
     },
     {
       name: "Jane Smith",
-      image: "https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp",
+      image: "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
       rating: 4,
       review: "Fantastic experience! The staff was very helpful and friendly.",
     },
@@ -23,19 +23,19 @@ const UserTestimonials = () => {
     },
     {
       name: "Emily Davis",
-      image: "https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp",
+      image: "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
       rating: 5,
       review: "Truly exceptional! Will definitely be coming back again.",
     },
     {
       name: "Michael Brown",
-      image: "https://img.daisyui.com/images/stock/photo-1521747116042-d57c4ccf1f22.webp",
+      image: "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
       rating: 4,
       review: "Great experience and excellent customer support.",
     },
     {
       name: "Sarah Johnson",
-      image: "https://img.daisyui.com/images/stock/photo-1580563029-b5740b28a8c9.webp",
+      image: "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
       rating: 5,
       review: "Best service I've ever received. Highly recommended!",
     },
@@ -52,6 +52,7 @@ const UserTestimonials = () => {
 
   return (
     <div className="w-full">
+      <h2 className="text-2xl font-bold mb-8">User Testimonial</h2>
       {/* Testimonial grid showing only 3 testimonials */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => (

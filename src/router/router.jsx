@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path: '/updateCar/:id',
                 element : <PrivateRoute><UpdateCars></UpdateCars></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/cars/${params.id}`)
+                loader: ({params}) => fetch(`https://car-rent-server-side.vercel.app/cars/${params.id}`)
             },
             {
                 path: '/myBookings',
@@ -50,12 +50,12 @@ const router = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/cars/${params.id}`)
+                loader: ({params})=> fetch(`https://car-rent-server-side.vercel.app/cars/${params.id}`)
             },
             {
                 path: '/dataVisualization',
                 element: <PrivateRoute><DataVisualization></DataVisualization></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/cars'),
+                loader: () => fetch('https://car-rent-server-side.vercel.app/cars'),
             },
             {
                 path: '/login',
