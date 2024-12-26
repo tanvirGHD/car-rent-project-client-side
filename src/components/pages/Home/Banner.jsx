@@ -47,7 +47,7 @@ const Banner = () => {
         <div className="text-center text-white p-6">
           <h1 className="text-4xl font-bold mb-4">Drive Your Dreams Today!</h1>
           <Link
-            href="/availableCar"
+            to="/availableCar"
             className="btn btn-primary py-2 px-6 text-lg rounded-full bg-[#179983] hover:bg-[#179983]"
           >
             View Available Cars

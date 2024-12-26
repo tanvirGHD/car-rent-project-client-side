@@ -1,20 +1,24 @@
 
+
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useAxiosSecure from "../../../hook/useAxiosSecure";
+
+
 
 const AvailableCar = () => {
   const [cars, setCars] = useState([]);
   const [booking, setBooking] = useState([])
-  const [view, setView] = useState("grid"); // Grid or List view
+  const [view, setView] = useState("grid"); 
   const [searchQuery, setSearchQuery] = useState(""); // For search functionality
 
-  const axiosSecure = useAxiosSecure()
+
   // Fetching the car data
   useEffect(() => {
-    axiosSecure.get("/cars")
+    axios.get("https://car-rent-server-side.vercel.app/cars")
       .then((response) => {
-        setCars(response.data);  
+        console.log(response.data);  // Log the response data to ensure it's an array
+        setCars(response.data);
       })
       .catch((error) => {
         console.error("Error fetching cars:", error);
@@ -23,12 +27,12 @@ const AvailableCar = () => {
 
 
   // Search functionality
-  const filteredCars = cars.filter(
+  const filteredCars = Array.isArray(cars) ? cars.filter(
     (car) =>
       car.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
       car.features.toLowerCase().includes(searchQuery.toLowerCase()) ||
       car.additionalInfo.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  ) : [];
 
   return (
     <div className="p-4">

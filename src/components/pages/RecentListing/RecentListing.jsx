@@ -1,14 +1,15 @@
 
 
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useAxiosSecure from "../../../hook/useAxiosSecure";
+
 
 const RecentListing = () => {
   const [cars, setCars] = useState([]);
-  const axiosSecure = useAxiosSecure()
+
 
   useEffect(() => {
-    axiosSecure.get("/cars")
+    axios.get("https://car-rent-server-side.vercel.app/cars")
       .then((response) => {
         const data = response.data;
         if (Array.isArray(data)) {
