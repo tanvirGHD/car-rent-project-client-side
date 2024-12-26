@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="footer border-t border-blue-300 text-base-content p-10 mt-auto bg-gray-100">
+    <footer className="footer border-t border-blue-300 text-base-content p-10 mt-auto className='bg-[#e0f7f3]">
       <aside>
         <p className="font-bold text-2xl text-gray-800">
           REntal Car Ltd.

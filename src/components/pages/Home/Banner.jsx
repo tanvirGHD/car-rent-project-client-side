@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const [activeItem, setActiveItem] = useState(1);
@@ -45,12 +46,12 @@ const Banner = () => {
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
         <div className="text-center text-white p-6">
           <h1 className="text-4xl font-bold mb-4">Drive Your Dreams Today!</h1>
-          <a
+          <Link
             href="/availableCar"
             className="btn btn-primary py-2 px-6 text-lg rounded-full bg-[#179983] hover:bg-[#179983]"
           >
             View Available Cars
-          </a>
+          </Link>
         </div>
       </div>
 

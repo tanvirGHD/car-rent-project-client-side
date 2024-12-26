@@ -28,7 +28,7 @@ const useAxiosSecure = () => {
                     logOutUser()
                     .then(() =>{
                         console.log('logged out user')
-                        navigate('/login')
+                        navigate('/')
                     })
                     .catch(error => console.log(error));
                 }
