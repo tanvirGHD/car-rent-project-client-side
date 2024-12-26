@@ -58,10 +58,6 @@ const MyBookings = () => {
                 .then(() => {
                     Swal.fire("Success!", "Booking dates updated successfully.", "success");
                 })
-                .catch(err => {
-                    console.error("Error updating booking:", err);
-                    Swal.fire("Error!", "Failed to update booking dates.", "error");
-                });
         }
         setShowModifyModal(false);
         setSelectedBooking(null);
