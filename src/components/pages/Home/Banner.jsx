@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -14,61 +15,55 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full h-[220px] md:h-[500px]">
       {/* Carousel Items */}
-      <div
-        className="carousel-container w-full overflow-hidden relative"
-        style={{ width: "100%", height: "100%" }}
-      >
+      <div className="carousel-container w-full overflow-hidden relative h-full">
         <div
-          className="carousel-wrapper w-full flex transition-transform duration-1000 ease-in-out"
+          className="carousel-wrapper flex transition-transform duration-1000 ease-in-out"
           style={{
             transform: `translateX(-${(activeItem - 1) * 100}%)`,
           }}
         >
-          {/* Repeating Carousel Items for Seamless Looping */}
-          <div className="carousel-item w-full">
-            <img src="/banner-img/1.png" className="w-full" alt="Premium Car 1" />
-          </div>
-          <div className="carousel-item w-full">
-            <img src="/banner-img/2.png" className="w-full" alt="Premium Car 2" />
-          </div>
-          <div className="carousel-item w-full">
-            <img src="/banner-img/3.png" className="w-full" alt="Premium Car 3" />
-          </div>
-          <div className="carousel-item w-full">
-            <img src="/banner-img/1.png" className="w-full" alt="Premium Car 1" />
-          </div>
+          {/* Repeating Carousel Items */}
+          {["14.jpg", "9.jpg", "15.jpg", "16.jpg"].map((img, index) => (
+            <div
+              key={index}
+              className="carousel-item w-full h-full flex-shrink-0"
+            >
+              <img
+                src={`/banner-img/${img}`}
+                className="w-full h-full object-cover"
+                style={{ aspectRatio: "16/9" }}
+                alt={`Premium Car ${index + 1}`}
+              />
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Content Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-        <div className="text-center text-white p-6">
-          <h1 className="text-4xl font-bold mb-4">Drive Your Dreams Today!</h1>
-          <Link
-            to="/availableCar"
-            className="btn btn-primary py-2 px-6 text-lg rounded-full bg-[#179983] hover:bg-[#179983]"
-          >
-            View Available Cars
-          </Link>
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
+        <div className="text-center px-4">
+          <h1 className="text-2xl md:text-4xl font-bold mb-4 text-[#89b918]">
+            Drive Your Dreams Today!
+          </h1>
+          <button className="py-2 px-4 md:px-6 text-sm rounded-full text-white bg-[#034833] hover:bg-[#013324]">
+            <Link to="/availableCar">View Available Cars</Link>
+          </button>
         </div>
       </div>
 
       {/* Carousel Navigation Buttons */}
       <div className="flex w-full justify-center gap-2 py-2">
-        <a href="#item1" className="btn btn-xs">
-          1
-        </a>
-        <a href="#item2" className="btn btn-xs">
-          2
-        </a>
-        <a href="#item3" className="btn btn-xs">
-          3
-        </a>
-        <a href="#item4" className="btn btn-xs">
-          4
-        </a>
+        {[1, 2, 3, 4].map((item) => (
+          <button
+            key={item}
+            onClick={() => setActiveItem(item)}
+            className={`btn btn-xs ${activeItem === item ? "btn-active" : ""}`}
+          >
+            {item}
+          </button>
+        ))}
       </div>
     </div>
   );

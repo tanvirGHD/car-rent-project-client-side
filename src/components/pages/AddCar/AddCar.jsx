@@ -41,8 +41,9 @@ const AddCar = () => {
   };
 
   return (
+    <div>
+      <h2 className="text-2xl text-[#034833]  font-bold mb-6 text-center">Add Car</h2>
     <div className="max-w-4xl mx-auto p-8 mb-10 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Add Car</h2>
       <form onSubmit={handleAddCar}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -50,7 +51,7 @@ const AddCar = () => {
             <input
               type="text"
               name="model"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               placeholder="Enter car model"
               required
             />
@@ -60,7 +61,7 @@ const AddCar = () => {
             <input
               type="number"
               name="dailyRentalPrice"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               placeholder="Enter daily rental price"
               required
             />
@@ -69,7 +70,7 @@ const AddCar = () => {
             <label className="block font-semibold mb-2">Availability</label>
             <select
               name="availability"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               required
             >
               <option value="">Select availability</option>
@@ -84,7 +85,7 @@ const AddCar = () => {
             <input
               type="text"
               name="registrationNumber"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               placeholder="Enter registration number"
               required
             />
@@ -94,7 +95,7 @@ const AddCar = () => {
             <input
               type="text"
               name="features"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               placeholder="e.g., GPS, AC, etc."
             />
           </div>
@@ -102,7 +103,7 @@ const AddCar = () => {
             <label className="block font-semibold mb-2">Description</label>
             <textarea
               name="description"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               placeholder="Enter description"
             />
           </div>
@@ -111,7 +112,7 @@ const AddCar = () => {
             <input
               type="url"
               name="images"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               placeholder="Enter image URL"
             />
           </div>
@@ -120,7 +121,7 @@ const AddCar = () => {
             <input
               type="date"
               name="dateAdded"
-              className="w-full p-3 border border-[#00C1A2] rounded-md"
+              className="w-full p-3 border border-[#02e6a1] rounded-md"
               required
             />
           </div>
@@ -130,19 +131,20 @@ const AddCar = () => {
           <input
             type="text"
             name="additionalInfo"
-            className="w-full p-3 border border-[#00C1A2] rounded-md"
+            className="w-full p-3 border border-[#02e6a1] rounded-md"
             placeholder="Any other information"
           />
         </div>
         <div className="mt-6 text-center">
           <button
             type="submit"
-            className="bg-[#00C1A2] text-white w-full px-6 py-2 rounded-md hover:bg-[#00A18D]"
+           className="relative h-10 w-full origin-top transform rounded-lg border-2 bg-[#018d63] border-[#034833] text-xl text-white before:absolute before:top-0 before:block before:h-0 before:w-full before:duration-500 hover:text-white hover:before:absolute hover:before:left-0 hover:before:-z-10 hover:before:h-full hover:before:bg-[#034833]"
           >
             Add Car
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

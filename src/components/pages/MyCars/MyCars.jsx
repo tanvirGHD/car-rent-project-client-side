@@ -80,7 +80,7 @@ const MyCars = () => {
 
   return (
     <div className="px-4 py-6">
-      <h2 className="text-2xl font-bold text-blue-600 mb-4">My Cars</h2>
+      <h2 className="text-3xl font-bold text-[#034833] mb-4">My Cars</h2>
 
       {/* Sorting Dropdown */}
       <div className="mb-4">
@@ -114,7 +114,7 @@ const MyCars = () => {
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto border-collapse">
             <thead>
-              <tr className="bg-gray-200">
+              <tr className="bg-[#E4F18D]">
                 <th className="px-4 py-2">Car Image</th>
                 <th className="px-4 py-2">Car Model</th>
                 <th className="px-4 py-2">Daily Rental Price</th>

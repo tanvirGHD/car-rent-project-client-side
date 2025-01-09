@@ -19,7 +19,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `px-3 py-2 rounded ${
-              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+              isActive ? "text-[#034833] bg-[#F7FEE7]" : "hover:bg-gray-200"
             }`
           }
         >
@@ -31,51 +31,68 @@ const Navbar = () => {
           to="/availableCar"
           className={({ isActive }) =>
             `px-3 py-2 rounded ${
-              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+              isActive ? "text-[#034833] bg-[#F7FEE7]" : "hover:bg-gray-200"
             }`
           }
         >
           Available Car
         </NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/addCar"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded ${
+                  isActive ? "text-[#034833] bg-[#F7FEE7]" : "hover:bg-gray-200"
+                }`
+              }
+            >
+              Add Car
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/myCars"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded ${
+                  isActive ? "text-[#034833] bg-[#F7FEE7]" : "hover:bg-gray-200"
+                }`
+              }
+            >
+              My Cars
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/myBookings"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded ${
+                  isActive ? "text-[#034833] bg-[#F7FEE7]" : "hover:bg-gray-200"
+                }`
+              }
+            >
+              My Bookings
+            </NavLink>
+          </li>
+        </>
+      )}
       <li>
         <NavLink
-          to="/addCar"
+          to="/about"
           className={({ isActive }) =>
             `px-3 py-2 rounded ${
-              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
+              isActive ? "text-[#034833] bg-[#F7FEE7]" : "hover:bg-gray-200"
             }`
           }
         >
-          Add Car
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myCars"
-          className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
-            }`
-          }
-        >
-          My Cars
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myBookings"
-          className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive ? "text-[#00C1A2] bg-[#daf7f4]" : "hover:bg-gray-200"
-            }`
-          }
-        >
-          My Bookings
+          About
         </NavLink>
       </li>
     </>
   );
+  
 
   // Handle sticky navbar logic
   useEffect(() => {
@@ -93,12 +110,12 @@ const Navbar = () => {
 
   return (
     <div
-      className={`navbar ${
+      className={`navbar bg-[#e4f18d]   ${
         isSticky ? "sticky top-0 z-50 bg-opacity-60 backdrop-blur-md" : ""
       }`}
     >
       {/* Navbar Start */}
-      <div className="navbar-start">
+      <div className="navbar-start ">
         {/* Dropdown for mobile view */}
         <div className="dropdown">
           <button tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -152,7 +169,7 @@ const Navbar = () => {
           <Link to="/login">
             <button
               className="btn"
-              style={{ backgroundColor: "#00C1A2", color: "white" }}
+              style={{ backgroundColor: "#034833", color: "white" }}
             >
               Login
             </button>

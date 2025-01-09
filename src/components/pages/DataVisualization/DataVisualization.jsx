@@ -32,7 +32,7 @@ const DataVisualization = () => {
   return (
     <div className="p-4 mt-12">
       {/* Header */}
-      <h2 className="text-4xl text-[#00C1A2] mb-6">Car Price Visualization</h2>
+      <h2 className="text-3xl font-bold text-[#034833] mb-6">Car Price Visualization</h2>
 
       {/* Rechart Bar Chart */}
       <div className="flex justify-center">

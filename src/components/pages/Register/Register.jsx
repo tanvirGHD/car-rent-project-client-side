@@ -71,7 +71,7 @@ const Register = () => {
   };
 
   return (
-    <div className="card bg-blue-50 w-full mb-7 max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="card bg-[#e8f1b1] w-full mb-7 max-w-4xl mx-auto my-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
       {/* Animation Section */}
       <div className="flex-1 flex items-center justify-center">
         <div className="w-48 md:w-64">
@@ -145,12 +145,12 @@ const Register = () => {
           <div className="form-control mt-6">
             <button
               type="submit"
-              className="btn btn-primary text-white bg-[#00C1A2] border-none hover:bg-[#0eaa90]"
+              className="btn btn-primary text-white bg-[#088a63] border-none hover:bg-[#045f44]"
             >
               Register
             </button>
           </div>
-          <p className="text-center text-sm text-blue-600">
+          <p className="text-center text-sm text-[#0d7757]">
             Already have an account?{" "}
             <Link
               to="/login"

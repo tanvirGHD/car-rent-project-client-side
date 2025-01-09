@@ -47,7 +47,7 @@ const Login = () => {
   };
 
   return (
-    <div className="card bg-blue-50 w-full mb-7 max-w-4xl mx-auto mt-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="card bg-[#e8f1b1] w-full mb-7 max-w-4xl mx-auto mt-10 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center gap-6">
       {/* Animation Section */}
       <div className="flex-1 flex items-center justify-center">
         <div className="w-48 md:w-64">
@@ -58,7 +58,7 @@ const Login = () => {
       {/* Form Section */}
       <div className="flex-1">
         <form onSubmit={handleLogin} className="space-y-4">
-          <h2 className="text-center text-3xl font-bold text-[#00C1A2]">
+          <h2 className="text-center text-3xl font-bold text-[#034833] ">
             Login
           </h2>
           <div className="form-control">
@@ -93,12 +93,12 @@ const Login = () => {
           <div className="form-control mt-6">
             <button
               type="submit"
-              className="btn btn-primary text-white bg-[#00C1A2] border-none hover:bg-[#0eaa90]"
+              className="btn btn-primary text-white bg-[#088a63] border-none hover:bg-[#045f44]"
             >
               Login
             </button>
           </div>
-          <p className="text-center text-sm text-blue-600">
+          <p className="text-center text-sm text-[#0d7757]">
             Don't have an account?{" "}
             <Link
               to="/register"

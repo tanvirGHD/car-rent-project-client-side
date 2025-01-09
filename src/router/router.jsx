@@ -12,6 +12,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import CarDetails from "../components/pages/CarDetails/CarDetails";
 import UpdateCars from "../components/pages/MyCars/UpdateCars";
 import DataVisualization from "../components/pages/DataVisualization/DataVisualization";
+import About from "../components/pages/About/About";
 
 
 
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element : <Register></Register>
+            },
+            {
+                path: '/about',
+                element : <About></About>
             },
             {
                 path : '*',

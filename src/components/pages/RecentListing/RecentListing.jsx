@@ -30,11 +30,11 @@ const RecentListing = () => {
   const recentCars = Array.isArray(cars) ? cars.slice(-6) : [];
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-8">
+    <div>
+      <h2 className="text-3xl text-[#034833]  font-bold mb-10">
         Recent Listings
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {recentCars.map((car) => (
           <div
             key={car._id}
@@ -43,16 +43,16 @@ const RecentListing = () => {
             <img
               src={car.images}
               alt={car.model}
-              className="w-full h-48 object-cover"
+              className="w-full h-52 object-cover"
             />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold">{car.model}</h3>
+            <div className="p-4 space-y-2">
+              <h3 className="text-2xl font-semibold text-[#89b918]">{car.model}</h3>
               <p className="text-sm text-gray-500">
                 Added: {car.dateAdded}
               </p>
-              <p className="text-lg font-semibold text-green-500">{`$${car.dailyRentalPrice}/day`}</p>
+              <p className="text-lg font-semibold text-gray-600">{`$${car.dailyRentalPrice}/day`}</p>
               <span
-                className={`inline-block px-3 py-1 text-white text-sm rounded-full mt-2 ${
+                className={`inline-block px-3 py-1 text-white text-sm rounded-xl mt-2 ${
                   car.availability === "available"
                     ? "bg-green-500"
                     : "bg-red-500"

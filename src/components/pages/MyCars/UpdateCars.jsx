@@ -52,8 +52,9 @@ const UpdateCars = () => {
   };
 
   return (
+    <div>
+      <h2 className="text-3xl font-bold mb-6 text-center my-7 text-[#034833]">Update My Cars</h2>
     <div className="max-w-4xl mx-auto p-8 mb-10 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">Update My Cars</h2>
       <form onSubmit={handleUpdateCar}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -151,12 +152,13 @@ const UpdateCars = () => {
         <div className="mt-6 text-center">
           <button
             type="submit"
-            className="bg-[#00C1A2] text-white w-full px-6 py-2 rounded-md hover:bg-[#00A18D]"
+            className="relative h-10 w-full origin-top transform rounded-lg border-2 border-[#00C1A2] text-xl text-white before:absolute before:top-0 before:block before:h-0 before:w-full before:duration-500 bg-[#00C1A2] hover:text-white hover:before:absolute hover:before:left-0 hover:before:-z-10 hover:before:h-full hover:before:bg-[#034833]"
           >
             Update
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

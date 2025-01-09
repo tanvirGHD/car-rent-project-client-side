@@ -94,16 +94,16 @@ const MyBookings = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
+            <h2 className="text-3xl font-bold text-[#034833] mb-4">My Bookings</h2>
             <Link to="/availableCar">
-                <button className="bg-green-500 text-white px-4 py-2 rounded mb-4">
+                <button className="bg-[#034833] text-white px-4 py-2 rounded mb-4">
                     Add New Booking
                 </button>
             </Link>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-separate border-spacing-2">
                     <thead>
-                        <tr className="bg-gray-200">
+                        <tr className="bg-[#E4F18D]">
                             <th className="p-3 text-left font-medium">Car Image</th>
                             <th className="p-3 text-left font-medium">Car Model</th>
                             <th className="p-3 text-left font-medium">Booking Date</th>

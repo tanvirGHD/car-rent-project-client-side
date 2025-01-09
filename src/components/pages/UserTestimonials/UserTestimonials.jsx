@@ -52,7 +52,7 @@ const UserTestimonials = () => {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-bold mb-8">User Testimonial</h2>
+      <h2 className="text-3xl font-bold text-[#034833]  my-10">User Testimonial</h2>
       {/* Testimonial grid showing only 3 testimonials */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => (
@@ -66,7 +66,7 @@ const UserTestimonials = () => {
                 alt={testimonial.name}
                 className="w-16 h-16 rounded-full mb-4"
               />
-              <div className="font-semibold">{testimonial.name}</div>
+              <div className="font-semibold text-[#89b918] text-lg">{testimonial.name}</div>
               <div className="flex mb-2">
                 {/* Rating (Stars) */}
                 <span className="text-yellow-500">
@@ -86,7 +86,7 @@ const UserTestimonials = () => {
             key={index}
             href={`#item${index + 1}`}
             onClick={() => setCurrentIndex(index)}
-            className={`btn btn-xs ${currentIndex === index ? "btn-primary" : ""}`}
+            className={`btn btn-xs ${currentIndex === index ? "btn-primary bg-[#034833]" : ""}`}
           >
             {index + 1}
           </a>
