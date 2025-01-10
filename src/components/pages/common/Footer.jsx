@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="footer flex flex-colmin-h-screen md:flex-row border-t border-blue-300 p-10 mt-auto bg-[#515c0e] dark:bg-[#034833] text-white space-y-6 md:space-y-0 md:space-x-10">
-      <aside className="md:w-1/3">
+    <footer className="footer flex flex-col md:flex-row items-center border-t border-blue-300 p-10 mt-auto bg-[#515c0e] dark:bg-[#034833] text-white space-y-6 md:space-y-0 md:space-x-10">
+      <aside className="md:w-1/3 flex flex-col items-center md:items-start">
         <p className="font-bold text-xl text-[#16c0a4] dark:text-[#89b918] flex items-center">
           <img
             src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
@@ -60,22 +60,22 @@ const Footer = () => {
           </a>
         </div>
       </aside>
-      <nav className="md:w-1/3">
-        <h6 className="footer-title font-semibold text-[#89b918]">Services</h6>
+      <nav className="md:w-1/3 mt-4 md:mt-0 flex flex-col items-center md:items-start">
+        <h6 className="footer-title font-semibold dark:text-[#89b918] text-[#16c0a4]">Services</h6>
         <a className="link link-hover">Branding</a>
         <a className="link link-hover">Design</a>
         <a className="link link-hover">Marketing</a>
         <a className="link link-hover">Advertisement</a>
       </nav>
-      <nav className="md:w-1/3">
-        <h6 className="footer-title font-semibold text-[#89b918]">Company</h6>
+      <nav className="md:w-1/3 mt-4 md:mt-0 flex flex-col items-center md:items-start">
+        <h6 className="footer-title font-semibold dark:text-[#89b918] text-[#16c0a4]">Company</h6>
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
         <a className="link link-hover">Jobs</a>
         <a className="link link-hover">Press kit</a>
       </nav>
-      <nav className="md:w-1/3">
-        <h6 className="footer-title font-semibold text-[#89b918]">Legal</h6>
+      <nav className="md:w-1/3 mt-4 md:mt-0 flex flex-col items-center md:items-start">
+        <h6 className="footer-title font-semibold dark:text-[#89b918] text-[#16c0a4]">Legal</h6>
         <a className="link link-hover">Terms of use</a>
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>

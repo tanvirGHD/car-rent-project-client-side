@@ -5,18 +5,6 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 const DataVisualization = () => {
   const [cars, setCars] = useState([]);
   const axiosSecure = useAxiosSecure();
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Check for dark mode
-  useEffect(() => {
-    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDarkMode(darkModeMediaQuery.matches);
-
-    const handleChange = (e) => setIsDarkMode(e.matches);
-    darkModeMediaQuery.addEventListener("change", handleChange);
-
-    return () => darkModeMediaQuery.removeEventListener("change", handleChange);
-  }, []);
 
   // Fetching the car data
   useEffect(() => {
@@ -52,18 +40,34 @@ const DataVisualization = () => {
       <div className="flex justify-center">
         <BarChart
           className="text-white"
-          width={800}
+          width={500}
           height={400}
           data={chartData}
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 20, right: 0, left: 20, bottom: 30 }} // Adjusted margin for spacing
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" tick={{ fill: isDarkMode ? "white" : "black" }} />
-          <YAxis tick={{ fill: isDarkMode ? "white" : "black" }} />
+          <XAxis
+            dataKey="name"
+            tick={{ fill: "dark:white" }}
+            angle={-45} // Rotated labels for better fit
+            textAnchor="end"
+            interval={0} // Prevent label overlap
+          />
+          <YAxis tick={{ fill: "dark:white" }} />
           <Tooltip />
           <Legend />
           <Bar dataKey="price" fill="#00C1A2" />
         </BarChart>
+      </div>
+
+      {/* Price Labels Below the Chart */}
+      <div className="flex justify-center mt-4">
+        {chartData.map((car, index) => (
+          <div key={index} className="mx-2">
+            <div className="text-center text-lg font-semibold text-[#00C1A2]">{car.price}</div>
+            <div className="text-center text-sm text-gray-600">{car.name}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
