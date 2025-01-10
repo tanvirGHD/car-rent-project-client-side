@@ -42,7 +42,7 @@ const AddCar = () => {
 
   return (
     <div>
-      <h2 className="text-2xl text-[#034833]  font-bold mb-6 text-center">Add Car</h2>
+      <h2 className="text-3xl mt-6 text-[#034833] dark:text-[#F59E0B]  font-bold mb-6 text-center">Add Car</h2>
     <div className="max-w-4xl mx-auto p-8 mb-10 bg-white shadow-lg rounded-lg">
       <form onSubmit={handleAddCar}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

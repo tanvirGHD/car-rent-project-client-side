@@ -1,7 +1,8 @@
+
+
 import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext/AuthContext";
-
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -139,13 +140,15 @@ const Navbar = () => {
 
   return (
     <div
-  className={`navbar ${
-    darkMode ? "bg-[#034833] text-white" : "bg-[#c7db43]"
-  } ${isSticky ? "sticky top-0 z-50 bg-opacity-60 backdrop-blur-md" : ""} px-[10px]`}
->
-  {/* Navbar Start */}
-  <div className="navbar-start">
-  <div className="dropdown">
+      className={`navbar ${
+        darkMode ? "bg-[#034833] text-white" : "bg-[#c7db43]"
+      } ${
+        isSticky ? "sticky top-0 z-50 bg-opacity-60 backdrop-blur-md" : ""
+      } px-[10px]`}
+    >
+      {/* Navbar Start */}
+      <div className="navbar-start">
+        <div className="dropdown">
           <button
             tabIndex={0}
             className="btn btn-ghost lg:hidden"
@@ -211,63 +214,60 @@ const Navbar = () => {
             </ul>
           )}
         </div>
-    <a className="btn btn-ghost text-[#179983] dark:text-[#89b918] text-3xl font-bold flex items-center space-x-2">
-      <img
-        src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
-        alt="Rentalcars Logo"
-        className="w-12 h-12 sm:w-8 sm:h-8"
-      />
-      <span className="md:text-3xl text-xl">Rentalcars</span>
-    </a>
-  </div>
-
-  {/* Navbar Center */}
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">{links}</ul>
-  </div>
-
-  {/* Navbar End */}
-  <div className="navbar-end">
-    <button
-      className="flex items-center px-3 space-x-2 transition"
-      onClick={() => setDarkMode(!darkMode)}
-    >
-      <div className="relative">
-        <img
-          src={
-            darkMode
-              ? "https://img.icons8.com/?size=100&id=8EUmYhfLPTCF&format=png&color=000000"
-              : "https://img.icons8.com/?size=100&id=JARydttrNTU2&format=png&color=000000"
-          }
-          alt={darkMode ? "Light Mode" : "Dark Mode"}
-          className="w-5 h-5"
-        />
+        <a className="btn btn-ghost text-[#179983] dark:text-[#89b918] text-3xl font-bold flex items-center space-x-2">
+          <img
+            src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
+            alt="Rentalcars Logo"
+            className="w-12 h-12 sm:w-8 sm:h-8"
+          />
+          <span className="md:text-3xl text-xl">Rentalcars</span>
+        </a>
       </div>
-    </button>
 
-    {user ? (
-      <button
-        onClick={handleLogOut}
-        className="btn bg-red-500 text-white hover:bg-red-600 ml-2"
-      >
-        Logout
-      </button>
-    ) : (
-      <Link to="/login">
+      {/* Navbar Center */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{links}</ul>
+      </div>
+
+      {/* Navbar End */}
+      <div className="navbar-end">
         <button
-          className="btn"
-          style={{ backgroundColor: "#034833", color: "white" }}
+          className="flex items-center px-3 space-x-2 transition"
+          onClick={() => setDarkMode(!darkMode)}
         >
-          Login
+          <div className="relative">
+            <img
+              src={
+                darkMode
+                  ? "https://img.icons8.com/?size=100&id=8EUmYhfLPTCF&format=png&color=000000"
+                  : "https://img.icons8.com/?size=100&id=JARydttrNTU2&format=png&color=000000"
+              }
+              alt={darkMode ? "Light Mode" : "Dark Mode"}
+              className="w-5 h-5"
+            />
+          </div>
         </button>
-      </Link>
-    )}
-  </div>
-</div>
 
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="btn bg-red-500 text-white hover:bg-red-600 ml-2"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button
+              className="btn"
+              style={{ backgroundColor: "#034833", color: "white" }}
+            >
+              Login
+            </button>
+          </Link>
+        )}
+      </div>
+    </div>
   );
 };
 
 export default Navbar;
-
-
