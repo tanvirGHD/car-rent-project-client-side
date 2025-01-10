@@ -80,11 +80,11 @@ const MyCars = () => {
 
   return (
     <div className="px-4 py-6">
-      <h2 className="text-3xl font-bold text-[#034833] mb-4">My Cars</h2>
+      <h2 className="text-3xl font-bold text-[#034833] dark:text-[#F59E0B] mb-4">My Cars</h2>
 
       {/* Sorting Dropdown */}
       <div className="mb-4">
-        <label className="mr-2 text-lg">Sort by:</label>
+        <label className="mr-2 text-lg dark:text-white">Sort by:</label>
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
@@ -99,7 +99,7 @@ const MyCars = () => {
 
       {/* Display Cars Table */}
       {cars.length === 0 ? (
-        <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg shadow-md">
+        <div className="flex items-center justify-center h-64 bg-green-100 rounded-lg shadow-md">
           <p className="text-gray-600 text-lg">
             No cars added yet.{" "}
             <Link
@@ -114,7 +114,7 @@ const MyCars = () => {
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto border-collapse">
             <thead>
-              <tr className="bg-[#E4F18D]">
+              <tr className="bg-[#89B918] dark:bg-[#034833] text-white">
                 <th className="px-4 py-2">Car Image</th>
                 <th className="px-4 py-2">Car Model</th>
                 <th className="px-4 py-2">Daily Rental Price</th>
@@ -125,21 +125,21 @@ const MyCars = () => {
             </thead>
             <tbody>
               {sortedCars.map((car) => (
-                <tr key={car._id} className="hover:bg-gray-100">
-                  <td className="border px-4 py-2">
+                <tr key={car._id} className="hover:bg-[#c3da8b]  dark:text-white dark:hover:bg-[#014e38]">
+                  <td className="border border-black dark:border-white px-4 py-2">
                     <img
                       src={car.images}
                       alt={car.model}
                       className="w-24 h-16 object-cover"
                     />
                   </td>
-                  <td className="border px-4 py-2">{car.model}</td>
-                  <td className="border px-4 py-2">
+                  <td className="border border-black dark:border-white px-4 py-2">{car.model}</td>
+                  <td className="border border-black dark:border-white px-4 py-2">
                     {car.dailyRentalPrice} BDT
                   </td>
-                  <td className="border px-4 py-2">{car.availability}</td>
-                  <td className="border px-4 py-2">{car.dateAdded}</td>
-                  <td className="border px-4 py-2 flex justify-between gap-2">
+                  <td className="border border-black dark:border-white px-4 py-2">{car.availability}</td>
+                  <td className="border border-black dark:border-white px-4 py-2">{car.dateAdded}</td>
+                  <td className="border border-black dark:border-white px-4 py-2 flex justify-between gap-2">
                     <Link to={`/updateCar/${car._id}`}>
                       <button className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto">
                         Update

@@ -2,7 +2,7 @@
 const ChooseUs = () => {
   return (
     <div className=" py-16">
-      <h2 className="text-center text-3xl text-[#034833] font-bold mb-8">Why Choose Us?</h2>
+      <h2 className="text-center text-3xl text-[#034833] dark:text-[#F59E0B] font-bold mb-8">Why Choose Us?</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="text-center bg-white shadow-lg p-6 rounded-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
           <i className="fas fa-car text-4xl mb-4 "></i>

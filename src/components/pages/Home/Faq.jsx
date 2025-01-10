@@ -37,7 +37,7 @@ const Faq = () => {
 
   return (
     <div>
-        <h1 className="text-3xl font-bold my-10 text-[#034833] ">Frequently Asked Questions</h1>
+        <h1 className="text-3xl font-bold my-10 text-[#034833] dark:text-[#F59E0B]">Frequently Asked Questions</h1>
         <div className="flex flex-col md:flex-row gap-5 items-center justify-between">
       {/* Animation Section */}
       <div className="w-full md:w-1/2 order-last md:order-first flex justify-center">

@@ -44,10 +44,10 @@ const Banner = () => {
       {/* Content Overlay */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
         <div className="text-center px-4">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4 text-[#89b918]">
+          <h1 className="text-2xl md:text-4xl font-bold mb-4 dark:text-[#F59E0B] text-[#89b918]">
             Drive Your Dreams Today!
           </h1>
-          <button className="py-2 px-4 md:px-6 text-sm rounded-full text-white bg-[#034833] hover:bg-[#013324]">
+          <button className="py-2 px-4 md:px-6 text-sm rounded-full dark:bg-[#10B981]  text-white bg-[#034833] hover:bg-[#013324]">
             <Link to="/availableCar">View Available Cars</Link>
           </button>
         </div>
@@ -59,7 +59,7 @@ const Banner = () => {
           <button
             key={item}
             onClick={() => setActiveItem(item)}
-            className={`btn btn-xs ${activeItem === item ? "btn-active" : ""}`}
+            className={`btn btn-xs  ${activeItem === item ? "btn-active bg-[#07694c] text-white" : ""}`}
           >
             {item}
           </button>

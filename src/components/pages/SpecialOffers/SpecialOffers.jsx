@@ -36,7 +36,7 @@ const SpecialOffers = () => {
     return (
         <div>
             {/* Offer Cards */}
-            <h2 className='text-3xl font-bold text-[#034833]  mb-8'>Special Offers</h2>
+            <h2 className='text-3xl font-bold text-[#034833] dark:text-[#F59E0B] mb-8'>Special Offers</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {offers.map((offer) => (
                     <div
@@ -47,7 +47,7 @@ const SpecialOffers = () => {
                         <h3 className="text-xl font-semibold text-[#89b918] mb-3">{offer.title}</h3>
                         <p className="text-gray-600 mb-4">{offer.description}</p>
                         <span className="text-xl font-bold text-[#89b918]">{offer.price}</span>
-                        <button className="mt-4  bg-[#034833] py-1 px-2 text-white ml-2 rounded-lg hover:underline transition">Learn More</button>
+                        <button className="mt-4 dark:bg-[#5f8604] bg-[#034833] py-1 px-2 text-white ml-2 rounded-lg hover:underline transition">Learn More</button>
                     </div>
                 ))}
             </div>

@@ -27,14 +27,14 @@ const RecentListing = () => {
   }, []);
 
   // Safely handle slicing only if cars is an array
-  const recentCars = Array.isArray(cars) ? cars.slice(-6) : [];
+  const recentCars = Array.isArray(cars) ? cars.slice(-8) : [];
 
   return (
     <div>
-      <h2 className="text-3xl text-[#034833]  font-bold mb-10">
+      <h2 className="text-3xl text-[#034833] dark:text-[#F59E0B]  font-bold mb-10">
         Recent Listings
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
         {recentCars.map((car) => (
           <div
             key={car._id}

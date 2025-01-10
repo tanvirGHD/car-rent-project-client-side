@@ -13,6 +13,7 @@ import CarDetails from "../components/pages/CarDetails/CarDetails";
 import UpdateCars from "../components/pages/MyCars/UpdateCars";
 import DataVisualization from "../components/pages/DataVisualization/DataVisualization";
 import About from "../components/pages/About/About";
+import Services  from "../components/pages/services/Services";
 
 
 
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 element : <About></About>
+            },
+            {
+                path: '/services',
+                element : <Services></Services>
             },
             {
                 path : '*',

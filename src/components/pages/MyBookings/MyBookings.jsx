@@ -94,7 +94,7 @@ const MyBookings = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-3xl font-bold text-[#034833] mb-4">My Bookings</h2>
+            <h2 className="text-3xl font-bold text-[#034833] dark:text-[#F59E0B] mb-4">My Bookings</h2>
             <Link to="/availableCar">
                 <button className="bg-[#034833] text-white px-4 py-2 rounded mb-4">
                     Add New Booking
@@ -103,7 +103,7 @@ const MyBookings = () => {
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-separate border-spacing-2">
                     <thead>
-                        <tr className="bg-[#E4F18D]">
+                        <tr className="bg-[#89B918] dark:bg-[#034833] text-white">
                             <th className="p-3 text-left font-medium">Car Image</th>
                             <th className="p-3 text-left font-medium">Car Model</th>
                             <th className="p-3 text-left font-medium">Booking Date</th>
@@ -115,7 +115,7 @@ const MyBookings = () => {
                     </thead>
                     <tbody>
                         {cars.map(({ id, model, price, bookings, status, imageUrl, startDate, endDate }) => (
-                            <tr key={id} className="hover:bg-gray-50 border-b">
+                            <tr key={id} className="hover:bg-[#c3da8b]  dark:text-white dark:hover:bg-[#014e38] border-b">
                                 <td className="p-3">
                                     <img src={imageUrl} alt={model} className="w-16 h-16 object-cover rounded-lg" />
                                 </td>

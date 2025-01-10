@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="footer flex flex-col md:flex-row border-t border-blue-300 p-10 mt-auto bg-[#034833] text-white space-y-6 md:space-y-0 md:space-x-10">
+    <footer className="footer flex flex-colmin-h-screen md:flex-row border-t border-blue-300 p-10 mt-auto bg-[#515c0e] dark:bg-[#034833] text-white space-y-6 md:space-y-0 md:space-x-10">
       <aside className="md:w-1/3">
-        <p className="font-bold text-xl text-[#89b918] flex items-center">
+        <p className="font-bold text-xl text-[#16c0a4] dark:text-[#89b918] flex items-center">
           <img
             src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
             className="h-20 w-20 mr-4"

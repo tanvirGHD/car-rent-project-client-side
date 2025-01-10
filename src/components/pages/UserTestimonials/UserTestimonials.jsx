@@ -52,7 +52,7 @@ const UserTestimonials = () => {
 
   return (
     <div className="w-full">
-      <h2 className="text-3xl font-bold text-[#034833]  my-10">User Testimonial</h2>
+      <h2 className="text-3xl font-bold text-[#034833] dark:text-[#F59E0B] my-10">User Testimonial</h2>
       {/* Testimonial grid showing only 3 testimonials */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => (
