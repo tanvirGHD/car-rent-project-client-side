@@ -7,7 +7,7 @@ const PartnerWithUs = () => {
                 <h2 className=" mb-6 text-3xl font-bold my-10 text-[#034833] dark:text-[#F59E0B]">
                     Partner With Us
                 </h2>
-                <p className="text-white dark:text-black mb-8 text-lg">
+                <p className="text-black mb-8 text-lg">
                     Earn money by renting out your car! Join our platform and turn your vehicle into a profitable asset.
                 </p>
 
@@ -40,11 +40,7 @@ const PartnerWithUs = () => {
                     </div>
                 </div>
 
-                <button
-                    className="mt-12 bg-[#034833] text-white py-3 px-8 rounded-lg hover:bg-[#023326] transition-all duration-300 transform hover:scale-105"
-                >
-                    Become a Partner
-                </button>
+                
             </div>
         </div>
     );
