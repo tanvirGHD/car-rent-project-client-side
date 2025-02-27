@@ -6,7 +6,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const MyCars = () => {
   const [cars, setCars] = useState([]);
-  const [sortOption, setSortOption] = useState("dateAsc");
+  const [sortOption, setSortOption] = useState("dateAsc"); // Default sorting option
   const axiosSecure = useAxiosSecure();
 
   // Fetch cars from the backend using axios
@@ -59,28 +59,34 @@ const MyCars = () => {
   const sortCars = (cars, option) => {
     switch (option) {
       case "dateAsc":
-        return cars.sort(
+        return [...cars].sort(
           (a, b) => new Date(a.dateAdded) - new Date(b.dateAdded)
         );
       case "dateDesc":
-        return cars.sort(
+        return [...cars].sort(
           (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
         );
       case "priceAsc":
-        return cars.sort((a, b) => a.dailyRentalPrice - b.dailyRentalPrice);
+        return [...cars].sort(
+          (a, b) => a.dailyRentalPrice - b.dailyRentalPrice
+        );
       case "priceDesc":
-        return cars.sort((a, b) => b.dailyRentalPrice - a.dailyRentalPrice);
+        return [...cars].sort(
+          (a, b) => b.dailyRentalPrice - a.dailyRentalPrice
+        );
       default:
         return cars;
     }
   };
 
   // Sorted cars
-  const sortedCars = sortCars([...cars], sortOption);
+  const sortedCars = sortCars(cars, sortOption);
 
   return (
     <div className="px-4 py-6">
-      <h2 className="text-3xl font-bold text-[#034833] dark:text-[#F59E0B] mb-4">My Cars</h2>
+      <h2 className="text-3xl font-bold text-[#034833] dark:text-[#F59E0B] mb-4">
+        My Cars
+      </h2>
 
       {/* Sorting Dropdown */}
       <div className="mb-4">
@@ -125,7 +131,10 @@ const MyCars = () => {
             </thead>
             <tbody>
               {sortedCars.map((car) => (
-                <tr key={car._id} className="hover:bg-[#c3da8b]  dark:text-white dark:hover:bg-[#014e38]">
+                <tr
+                  key={car._id}
+                  className="hover:bg-[#c3da8b] dark:text-white dark:hover:bg-[#014e38]"
+                >
                   <td className="border border-black dark:border-white px-4 py-2">
                     <img
                       src={car.images}
@@ -133,12 +142,18 @@ const MyCars = () => {
                       className="w-24 h-16 object-cover"
                     />
                   </td>
-                  <td className="border border-black dark:border-white px-4 py-2">{car.model}</td>
+                  <td className="border border-black dark:border-white px-4 py-2">
+                    {car.model}
+                  </td>
                   <td className="border border-black dark:border-white px-4 py-2">
                     {car.dailyRentalPrice} BDT
                   </td>
-                  <td className="border border-black dark:border-white px-4 py-2">{car.availability}</td>
-                  <td className="border border-black dark:border-white px-4 py-2">{car.dateAdded}</td>
+                  <td className="border border-black dark:border-white px-4 py-2">
+                    {car.availability}
+                  </td>
+                  <td className="border border-black dark:border-white px-4 py-2">
+                    {car.dateAdded}
+                  </td>
                   <td className="border border-black dark:border-white px-4 py-2 flex justify-between gap-2">
                     <Link to={`/updateCar/${car._id}`}>
                       <button className="bg-blue-500 text-white px-4 py-2 rounded w-full sm:w-auto">
