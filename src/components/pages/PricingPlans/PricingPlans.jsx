@@ -6,36 +6,51 @@ const PricingPlans = () => {
             name: "Basic Plan",
             price: "$30/day",
             features: ["✔ 100 KM Free", "✔ Basic Insurance", "✔ 24/7 Support"],
-            bgColor: "from-blue-100 to-blue-200",
-            hoverBgColor: "from-blue-200 to-blue-300",
+            bgColor: "rgba(96, 165, 250, 0.1)", // Light blue with transparency
+            borderColor: "rgba(96, 165, 250, 0.3)", // Light blue border
+            hoverBgColor: "rgba(96, 165, 250, 0.2)", // Slightly darker on hover
         },
         {
             name: "Standard Plan",
             price: "$50/day",
             features: ["✔ 200 KM Free", "✔ Full Insurance", "✔ Roadside Assistance"],
-            bgColor: "from-green-100 to-green-200",
-            hoverBgColor: "from-green-200 to-green-300",
+            bgColor: "rgba(52, 211, 153, 0.1)", // Light green with transparency
+            borderColor: "rgba(52, 211, 153, 0.3)", // Light green border
+            hoverBgColor: "rgba(52, 211, 153, 0.2)", // Slightly darker on hover
         },
         {
             name: "Premium Plan",
             price: "$80/day",
             features: ["✔ Unlimited KM", "✔ VIP Support", "✔ Free Fuel Refill"],
-            bgColor: "from-purple-100 to-purple-200",
-            hoverBgColor: "from-purple-200 to-purple-300",
+            bgColor: "rgba(168, 85, 247, 0.1)", // Light purple with transparency
+            borderColor: "rgba(168, 85, 247, 0.3)", // Light purple border
+            hoverBgColor: "rgba(168, 85, 247, 0.2)", // Slightly darker on hover
         },
     ];
 
     return (
         <div className="my-12">
-            <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold my-10 text-[#034833] dark:text-[#F59E0B]">
                 Our Pricing Plans
             </h2>
             <div className="grid md:grid-cols-3 gap-8 w-11/12 mx-auto">
                 {plans.map((plan, index) => (
                     <div
                         key={index}
-                        className={`bg-gradient-to-b ${plan.bgColor} border border-gray-200 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}
+                        className="relative p-8 rounded-2xl backdrop-blur-sm border border-opacity-20 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                        style={{
+                            backgroundColor: plan.bgColor,
+                            borderColor: plan.borderColor,
+                        }}
                     >
+                        {/* Glow Effect */}
+                        <div
+                            className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300"
+                            style={{
+                                background: `radial-gradient(circle at 50% 50%, ${plan.borderColor}, transparent)`,
+                            }}
+                        ></div>
+
                         <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.name}</h3>
                         <p className="text-3xl font-bold text-gray-900 mb-6">{plan.price}</p>
                         <ul className="space-y-3 mb-6">
@@ -47,7 +62,7 @@ const PricingPlans = () => {
                             ))}
                         </ul>
                         <button
-                            className={`w-full bg-gradient-to-r ${plan.hoverBgColor} text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-all duration-300`}
+                            className="w-full bg-white bg-opacity-20 text-gray-800 font-semibold py-3 px-6 rounded-lg border border-opacity-20 hover:bg-opacity-40 hover:border-opacity-40 transition-all duration-300"
                         >
                             Choose Plan
                         </button>
