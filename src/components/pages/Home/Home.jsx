@@ -6,6 +6,7 @@ import UserTestimonials from '../UserTestimonials/UserTestimonials';
 import SpecialOffers from '../SpecialOffers/SpecialOffers';
 import Faq from './Faq';
 import PricingPlans from '../PricingPlans/PricingPlans';
+import PartnerWithUs from '../PartnerWithUs/PartnerWithUs';
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
             <SpecialOffers></SpecialOffers>
             <Faq></Faq>
             <PricingPlans></PricingPlans>
+            <PartnerWithUs></PartnerWithUs>
             </div>
         </div>
     );
