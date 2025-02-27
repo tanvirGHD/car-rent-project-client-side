@@ -1,5 +1,3 @@
-
-
 import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext/AuthContext";
@@ -65,48 +63,57 @@ const Navbar = () => {
           Available Car
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/addCar"
-          className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`
-          }
-        >
-          Add Car
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myCars"
-          className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`
-          }
-        >
-          My Cars
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myBookings"
-          className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`
-          }
-        >
-          My Bookings
-        </NavLink>
-      </li>
+      {/* Show "Add Car" only if user is logged in */}
+      {user && (
+        <li>
+          <NavLink
+            to="/addCar"
+            className={({ isActive }) =>
+              `px-3 py-2 rounded ${
+                isActive
+                  ? "text-[#034833] bg-[#F7FEE7]"
+                  : "hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`
+            }
+          >
+            Add Car
+          </NavLink>
+        </li>
+      )}
+      {/* Show "My Cars" only if user is logged in */}
+      {user && (
+        <li>
+          <NavLink
+            to="/myCars"
+            className={({ isActive }) =>
+              `px-3 py-2 rounded ${
+                isActive
+                  ? "text-[#034833] bg-[#F7FEE7]"
+                  : "hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`
+            }
+          >
+            My Cars
+          </NavLink>
+        </li>
+      )}
+      {/* Show "My Bookings" only if user is logged in */}
+      {user && (
+        <li>
+          <NavLink
+            to="/myBookings"
+            className={({ isActive }) =>
+              `px-3 py-2 rounded ${
+                isActive
+                  ? "text-[#034833] bg-[#F7FEE7]"
+                  : "hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`
+            }
+          >
+            My Bookings
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to="/about"
@@ -140,9 +147,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`navbar ${
-        darkMode ? "bg-[#034833] text-white" : "bg-[#c7db43]"
-      } ${
+      className={`navbar ${darkMode ? "bg-[#034833] text-white" : "bg-[#c7db43]"} ${
         isSticky ? "sticky top-0 z-50 bg-opacity-60 backdrop-blur-md" : ""
       } px-[10px]`}
     >
