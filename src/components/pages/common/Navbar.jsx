@@ -1,4 +1,5 @@
-import { useContext, useState, useEffect } from "react";
+
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext/AuthContext";
 
@@ -9,7 +10,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogOut = () => {
-    logOutUser().then(() => {});
+    logOutUser().then(() => { });
   };
 
   const toggleDarkMode = () => {
@@ -39,10 +40,9 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+            `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+              ? "text-white bg-[#F46A13] shadow-lg"
+              : "hover:bg-white/20 dark:hover:bg-white/10"
             }`
           }
         >
@@ -53,10 +53,9 @@ const Navbar = () => {
         <NavLink
           to="/availableCar"
           className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+            `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+              ? "text-white bg-[#F46A13] shadow-lg"
+              : "hover:bg-white/20 dark:hover:bg-white/10"
             }`
           }
         >
@@ -69,10 +68,9 @@ const Navbar = () => {
           <NavLink
             to="/addCar"
             className={({ isActive }) =>
-              `px-3 py-2 rounded ${
-                isActive
-                  ? "text-[#034833] bg-[#F7FEE7]"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-700"
+              `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+                ? "text-white bg-[#F46A13] shadow-lg"
+                : "hover:bg-white/20 dark:hover:bg-white/10"
               }`
             }
           >
@@ -86,10 +84,9 @@ const Navbar = () => {
           <NavLink
             to="/myCars"
             className={({ isActive }) =>
-              `px-3 py-2 rounded ${
-                isActive
-                  ? "text-[#034833] bg-[#F7FEE7]"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-700"
+              `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+                ? "text-white bg-[#F46A13] shadow-lg"
+                : "hover:bg-white/20 dark:hover:bg-white/10"
               }`
             }
           >
@@ -103,10 +100,9 @@ const Navbar = () => {
           <NavLink
             to="/myBookings"
             className={({ isActive }) =>
-              `px-3 py-2 rounded ${
-                isActive
-                  ? "text-[#034833] bg-[#F7FEE7]"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-700"
+              `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+                ? "text-white bg-[#F46A13] shadow-lg"
+                : "hover:bg-white/20 dark:hover:bg-white/10"
               }`
             }
           >
@@ -118,10 +114,9 @@ const Navbar = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+            `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+              ? "text-white bg-[#F46A13] shadow-lg"
+              : "hover:bg-white/20 dark:hover:bg-white/10"
             }`
           }
         >
@@ -132,10 +127,9 @@ const Navbar = () => {
         <NavLink
           to="/services"
           className={({ isActive }) =>
-            `px-3 py-2 rounded ${
-              isActive
-                ? "text-[#034833] bg-[#F7FEE7]"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+            `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+              ? "text-white bg-[#F46A13] shadow-lg"
+              : "hover:bg-white/20 dark:hover:bg-white/10"
             }`
           }
         >
@@ -147,16 +141,15 @@ const Navbar = () => {
 
   return (
     <div
-      className={`navbar ${darkMode ? "bg-[#034833] text-white" : "bg-[#c7db43]"} ${
-        isSticky ? "sticky top-0 z-50 bg-opacity-60 backdrop-blur-md" : ""
-      } px-[10px]`}
+      className={`navbar ${darkMode ? "bg-gradient-to-r from-[#034833] to-[#045a41] text-white" : "bg-gradient-to-r from-[#ffffff] to-[#b8cc3a]"} ${isSticky ? "sticky top-0 z-50 shadow-xl backdrop-blur-md bg-opacity-95" : "shadow-md"
+        } px-4 md:px-8 py-3 transition-all duration-300`}
     >
       {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown">
           <button
             tabIndex={0}
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost lg:hidden hover:bg-white/20 rounded-lg"
             onClick={() => setMenuOpen(!menuOpen)} // Toggle menu open/close
           >
             {!menuOpen ? (
@@ -194,16 +187,16 @@ const Navbar = () => {
           {menuOpen && (
             <ul
               tabIndex={0}
-              className="menu dropdown-content mt-3 z-[1] w-52 bg-base-100 rounded-box shadow p-2 dark:bg-[#034833]"
+              className="menu dropdown-content mt-3 z-[1] w-64 bg-white dark:bg-[#034833] rounded-xl shadow-2xl p-4 border border-gray-200 dark:border-gray-700"
             >
               {links}
               <button
-                className="absolute top-2 right-2 text-white"
+                className="absolute top-3 right-3 text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full p-1 transition-colors"
                 onClick={() => setMenuOpen(false)} // Close menu
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -219,25 +212,26 @@ const Navbar = () => {
             </ul>
           )}
         </div>
-        <a className="btn btn-ghost text-[#179983] dark:text-[#89b918] text-3xl font-bold flex items-center space-x-2">
+        <a className="btn btn-ghost hover:bg-white/20 text-[#179983] dark:text-[#F46A13] text-xl md:text-3xl font-extrabold flex items-center space-x-2 transition-all duration-300">
           <img
-            src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
+            src="https://img.icons8.com/?size=100&id=12684&format=png&color=F26612"
             alt="Rentalcars Logo"
-            className="w-12 h-12 sm:w-8 sm:h-8"
+            className="w-10 h-10 md:w-12 md:h-12 drop-shadow-lg"
           />
-          <span className="md:text-3xl text-xl">Rentalcars</span>
+
+          <span className="hidden sm:inline tracking-tight text-[#F26612]">Dreams Rent</span>
         </a>
       </div>
 
       {/* Navbar Center */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 space-x-2">{links}</ul>
       </div>
 
       {/* Navbar End */}
-      <div className="navbar-end">
+      <div className="navbar-end flex items-center space-x-3">
         <button
-          className="flex items-center px-3 space-x-2 transition"
+          className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
           onClick={() => setDarkMode(!darkMode)}
         >
           <div className="relative">
@@ -248,7 +242,7 @@ const Navbar = () => {
                   : "https://img.icons8.com/?size=100&id=JARydttrNTU2&format=png&color=000000"
               }
               alt={darkMode ? "Light Mode" : "Dark Mode"}
-              className="w-5 h-5"
+              className="w-6 h-6 filter drop-shadow-md"
             />
           </div>
         </button>
@@ -256,16 +250,13 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleLogOut}
-            className="btn bg-red-500 text-white hover:bg-red-600 ml-2"
+            className="btn bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 border-0 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold px-6"
           >
             Logout
           </button>
         ) : (
           <Link to="/login">
-            <button
-              className="btn"
-              style={{ backgroundColor: "#034833", color: "white" }}
-            >
+            <button className="btn bg-gradient-to-r from-[#F46A13] to-[#e05a0a] text-white hover:from-[#e05a0a] hover:to-[#d14f08] border-0 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold px-6">
               Login
             </button>
           </Link>

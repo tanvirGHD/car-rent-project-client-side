@@ -1,73 +1,130 @@
-import React from 'react';
+import { FaCar, FaCheck, FaGasPump, FaHeadset, FaRoad, FaShieldAlt, FaStar } from 'react-icons/fa';
 
 const PricingPlans = () => {
     const plans = [
         {
             name: "Basic Plan",
-            price: "$30/day",
-            features: ["✔ 100 KM Free", "✔ Basic Insurance", "✔ 24/7 Support"],
-            bgColor: "rgba(96, 165, 250, 0.1)", // Light blue with transparency
-            borderColor: "rgba(96, 165, 250, 0.3)", // Light blue border
-            hoverBgColor: "rgba(96, 165, 250, 0.2)", // Slightly darker on hover
+            price: "$30",
+            period: "day",
+            description: "Perfect for short trips",
+            features: [
+                { icon: <FaRoad />, text: "100 KM Free" },
+                { icon: <FaShieldAlt />, text: "Basic Insurance" },
+                { icon: <FaHeadset />, text: "24/7 Support" },
+            ],
+            badge: null,
+            gradient: "from-blue-500 to-blue-600",
+            iconColor: "text-blue-500",
         },
         {
             name: "Standard Plan",
-            price: "$50/day",
-            features: ["✔ 200 KM Free", "✔ Full Insurance", "✔ Roadside Assistance"],
-            bgColor: "rgba(52, 211, 153, 0.1)", // Light green with transparency
-            borderColor: "rgba(52, 211, 153, 0.3)", // Light green border
-            hoverBgColor: "rgba(52, 211, 153, 0.2)", // Slightly darker on hover
+            price: "$50",
+            period: "day",
+            description: "Most popular choice",
+            features: [
+                { icon: <FaRoad />, text: "200 KM Free" },
+                { icon: <FaShieldAlt />, text: "Full Insurance" },
+                { icon: <FaCar />, text: "Roadside Assistance" },
+            ],
+            badge: "Popular",
+            gradient: "from-[#F26611] to-[#e05a0a]",
+            iconColor: "text-[#F26611]",
         },
         {
             name: "Premium Plan",
-            price: "$80/day",
-            features: ["✔ Unlimited KM", "✔ VIP Support", "✔ Free Fuel Refill"],
-            bgColor: "rgba(168, 85, 247, 0.1)", // Light purple with transparency
-            borderColor: "rgba(168, 85, 247, 0.3)", // Light purple border
-            hoverBgColor: "rgba(168, 85, 247, 0.2)", // Slightly darker on hover
+            price: "$80",
+            period: "day",
+            description: "Ultimate luxury experience",
+            features: [
+                { icon: <FaStar />, text: "Unlimited KM" },
+                { icon: <FaHeadset />, text: "VIP Support" },
+                { icon: <FaGasPump />, text: "Free Fuel Refill" },
+            ],
+            badge: "Best Value",
+            gradient: "from-purple-500 to-purple-600",
+            iconColor: "text-purple-500",
         },
     ];
 
     return (
-        <div className="my-12">
-            <h2 className="text-3xl font-bold my-10 text-[#034833] dark:text-[#F59E0B]">
-                Our Pricing Plans
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8 w-11/12 mx-auto">
-                {plans.map((plan, index) => (
-                    <div
-                        key={index}
-                        className="relative p-8 rounded-2xl backdrop-blur-sm border border-opacity-20 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                        style={{
-                            backgroundColor: plan.bgColor,
-                            borderColor: plan.borderColor,
-                        }}
-                    >
-                        {/* Glow Effect */}
-                        <div
-                            className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300"
-                            style={{
-                                background: `radial-gradient(circle at 50% 50%, ${plan.borderColor}, transparent)`,
-                            }}
-                        ></div>
+        <div className="py-16 px-4 bg-white dark:from-gray-800 dark:to-gray-900">
+            <div className="container mx-auto">
+                {/* Header */}
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#034833] dark:text-[#F26611] mb-4">
+                        Our Pricing Plans
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Choose the perfect plan that suits your travel needs and budget
+                    </p>
+                </div>
 
-                        <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.name}</h3>
-                        <p className="text-3xl font-bold text-gray-900 mb-6">{plan.price}</p>
-                        <ul className="space-y-3 mb-6">
-                            {plan.features.map((feature, i) => (
-                                <li key={i} className="text-gray-700 flex items-center">
-                                    <span className="mr-2">✔</span>
-                                    {feature}
-                                </li>
-                            ))}
-                        </ul>
-                        <button
-                            className="w-full bg-white bg-opacity-20 text-gray-800 font-semibold py-3 px-6 rounded-lg border border-opacity-20 hover:bg-opacity-40 hover:border-opacity-40 transition-all duration-300"
+                {/* Pricing Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {plans.map((plan, index) => (
+                        <div
+                            key={index}
+                            className={`group relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 ${plan.badge ? 'transform md:scale-105 ring-2 ring-[#F26611]' : 'hover:scale-105'
+                                }`}
                         >
-                            Choose Plan
-                        </button>
-                    </div>
-                ))}
+                            {/* Badge */}
+                            {plan.badge && (
+                                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                    <span className={`inline-block bg-gradient-to-r ${plan.gradient} text-white text-sm font-bold py-2 px-6 rounded-full shadow-lg`}>
+                                        {plan.badge}
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* Plan Name */}
+                            <div className="text-center mb-6 mt-4">
+                                <h3 className="text-2xl font-bold text-[#034833] dark:text-white mb-2">
+                                    {plan.name}
+                                </h3>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">
+                                    {plan.description}
+                                </p>
+                            </div>
+
+                            {/* Price */}
+                            <div className="text-center mb-8">
+                                <div className="flex items-end justify-center gap-1">
+                                    <span className={`text-5xl font-extrabold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
+                                        {plan.price}
+                                    </span>
+                                    <span className="text-gray-500 dark:text-gray-400 text-lg mb-2">
+                                        /{plan.period}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Features */}
+                            <ul className="space-y-4 mb-8">
+                                {plan.features.map((feature, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                        <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r ${plan.gradient} text-white flex-shrink-0 shadow-md`}>
+                                            <FaCheck className="text-sm" />
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className={plan.iconColor}>{feature.icon}</span>
+                                            <span className="font-medium">{feature.text}</span>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* CTA Button */}
+                            <button
+                                className={`w-full bg-gradient-to-r ${plan.gradient} text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
+                            >
+                                Choose Plan
+                            </button>
+
+                            {/* Decorative Element */}
+                            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${plan.gradient} opacity-5 rounded-full -translate-y-16 translate-x-16 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

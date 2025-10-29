@@ -1,85 +1,143 @@
+import { FaBehance, FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaPaperPlane, FaPhone, FaTwitter } from 'react-icons/fa';
+
 const Footer = () => {
   return (
-    <footer className="footer flex flex-col md:flex-row items-center border-t border-blue-300 p-10 mt-auto bg-[#515c0e] dark:bg-[#034833] text-white space-y-6 md:space-y-0 md:space-x-10">
-      <aside className="md:w-1/3 flex flex-col items-center md:items-start">
-        <p className="font-bold text-xl text-[#16c0a4] dark:text-[#89b918] flex items-center">
-          <img
-            src="https://img.icons8.com/?size=100&id=qzKNWF9sbXPV&format=png&color=000000"
-            className="h-20 w-20 mr-4"
-            alt="Rental Car Logo"
-          />
-          Rental Car Ltd.
-          <br />
-          Providing reliable service since 1992
-        </p>
-        <div className="mt-4 flex space-x-4">
-          {/* Social Media Icons */}
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://img.icons8.com/ios-filled/50/000000/facebook--v1.png"
-              alt="Facebook"
-              className="w-6 h-6 hover:scale-110 transition-transform duration-200"
-            />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://img.icons8.com/ios-filled/50/000000/twitter--v1.png"
-              alt="Twitter"
-              className="w-6 h-6 hover:scale-110 transition-transform duration-200"
-            />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://img.icons8.com/ios-filled/50/000000/linkedin.png"
-              alt="LinkedIn"
-              className="w-6 h-6 hover:scale-110 transition-transform duration-200"
-            />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png"
-              alt="Instagram"
-              className="w-6 h-6 hover:scale-110 transition-transform duration-200"
-            />
-          </a>
+    <footer className="bg-[#2b2b2b] dark:bg-[#1a1a1a] text-gray-300">
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* About Company */}
+          <div>
+            <h3 className="text-white text-lg font-bold mb-4 relative inline-block">
+              About Company
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-[#F26611]"></span>
+            </h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Our Company</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Shop Toyota</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Dreamsrentals USA</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Dreamsrentals Worldwide</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Dreamsrental Category</a></li>
+            </ul>
+          </div>
+
+          {/* Vehicles Type */}
+          <div>
+            <h3 className="text-white text-lg font-bold mb-4 relative inline-block">
+              Vehicles Type
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-[#F26611]"></span>
+            </h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">All Vehicles</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">SUVs</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Trucks</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Cars</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Crossovers</a></li>
+            </ul>
+          </div>
+
+          {/* Quick links */}
+          <div>
+            <h3 className="text-white text-lg font-bold mb-4 relative inline-block">
+              Quick links
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-[#F26611]"></span>
+            </h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">My Account</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Champaigns</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Dreamsrental Dealers</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Deals and Incentive</a></li>
+              <li><a href="#" className="hover:text-[#F26611] transition-colors duration-300">Financial Services</a></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-white text-lg font-bold mb-4 relative inline-block">
+              Contact Info
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-[#F26611]"></span>
+            </h3>
+
+            {/* Phone */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-[#F26611] p-3 rounded">
+                <FaPhone className="text-white text-lg" />
+              </div>
+              <span className="text-gray-400">+ 1 (888) 760 1940</span>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-[#F26611] p-3 rounded">
+                <FaEnvelope className="text-white text-lg" />
+              </div>
+              <span className="text-gray-400">support@example.com</span>
+            </div>
+
+            {/* Newsletter */}
+            <div className="mt-6">
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="Enter You Email Here"
+                  className="flex-1 px-4 py-2 bg-white text-gray-800 rounded-l focus:outline-none"
+                />
+                <button className="bg-[#F26611] px-4 py-2 rounded-r hover:bg-[#e05a0a] transition-colors duration-300">
+                  <FaPaperPlane className="text-white" />
+                </button>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex gap-3 mt-6">
+              <a href="#" className="bg-[#1877f2] p-2.5 rounded-full hover:scale-110 transition-transform duration-300">
+                <FaFacebook className="text-white text-lg" />
+              </a>
+              <a href="#" className="bg-[#e4405f] p-2.5 rounded-full hover:scale-110 transition-transform duration-300">
+                <FaInstagram className="text-white text-lg" />
+              </a>
+              <a href="#" className="bg-[#1769ff] p-2.5 rounded-full hover:scale-110 transition-transform duration-300">
+                <FaBehance className="text-white text-lg" />
+              </a>
+              <a href="#" className="bg-[#1da1f2] p-2.5 rounded-full hover:scale-110 transition-transform duration-300">
+                <FaTwitter className="text-white text-lg" />
+              </a>
+              <a href="#" className="bg-[#0077b5] p-2.5 rounded-full hover:scale-110 transition-transform duration-300">
+                <FaLinkedin className="text-white text-lg" />
+              </a>
+            </div>
+          </div>
         </div>
-      </aside>
-      <nav className="md:w-1/3 mt-4 md:mt-0 flex flex-col items-center md:items-start">
-        <h6 className="footer-title font-semibold dark:text-[#89b918] text-[#16c0a4]">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
-      </nav>
-      <nav className="md:w-1/3 mt-4 md:mt-0 flex flex-col items-center md:items-start">
-        <h6 className="footer-title font-semibold dark:text-[#89b918] text-[#16c0a4]">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
-      </nav>
-      <nav className="md:w-1/3 mt-4 md:mt-0 flex flex-col items-center md:items-start">
-        <h6 className="footer-title font-semibold dark:text-[#89b918] text-[#16c0a4]">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
-      </nav>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-700">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
+            <p className="text-gray-400 text-sm">
+              © 2025 Dreams Rent. All Rights Reserved.
+            </p>
+
+            {/* Payment Methods */}
+            <div className="flex gap-3">
+              <div className="bg-white px-4 py-2 rounded shadow">
+                <span className="text-blue-700 font-bold">PayPal</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded shadow">
+                <span className="text-blue-700 font-bold">VISA</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded shadow flex items-center gap-1">
+                <div className="w-6 h-6 bg-red-500 rounded-full"></div>
+                <div className="w-6 h-6 bg-orange-500 rounded-full -ml-3"></div>
+              </div>
+              <div className="bg-white px-4 py-2 rounded shadow">
+                <span className="text-gray-700 font-bold">Pay</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
